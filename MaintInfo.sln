@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintInfo", "MaintInfo\Main
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAOMaintInfo", "DAOMaintInfo\DAOMaintInfo.csproj", "{707DA309-FE4A-459D-9BE0-3B9CBC0C9378}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLLMaintInfo", "BLLMaintInfo\BLLMaintInfo.csproj", "{7BF703E0-7663-4D18-B924-A9A7705D6090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BOMaintInfo", "BOMaintInfo\BOMaintInfo.csproj", "{6ADEF9CB-6507-436C-B52C-0D278AB1C1D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{707DA309-FE4A-459D-9BE0-3B9CBC0C9378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707DA309-FE4A-459D-9BE0-3B9CBC0C9378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707DA309-FE4A-459D-9BE0-3B9CBC0C9378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF703E0-7663-4D18-B924-A9A7705D6090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF703E0-7663-4D18-B924-A9A7705D6090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF703E0-7663-4D18-B924-A9A7705D6090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF703E0-7663-4D18-B924-A9A7705D6090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADEF9CB-6507-436C-B52C-0D278AB1C1D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADEF9CB-6507-436C-B52C-0D278AB1C1D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADEF9CB-6507-436C-B52C-0D278AB1C1D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADEF9CB-6507-436C-B52C-0D278AB1C1D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
