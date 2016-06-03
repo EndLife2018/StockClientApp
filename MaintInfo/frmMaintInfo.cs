@@ -16,5 +16,15 @@ namespace MaintInfo
         {
             InitializeComponent();
         }
+
+        private void gérerLesMissionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gererLesCentresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
