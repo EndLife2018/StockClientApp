@@ -1,6 +1,6 @@
 ﻿namespace MaintInfo
 {
-    partial class Form1
+    partial class frmMaintInfo
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmMaintInfo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(602, 364);
+            this.IsMdiContainer = true;
+            this.Name = "frmMaintInfo";
+            this.Text = "MaintInfo";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

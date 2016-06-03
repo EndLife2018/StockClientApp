@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MaintInfo
 {
-    public partial class Form1 : Form
+    public partial class frmMaintInfo : Form
     {
-        public Form1()
+        public frmMaintInfo()
         {
             InitializeComponent();
         }
