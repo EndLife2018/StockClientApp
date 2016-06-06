@@ -19,15 +19,69 @@ namespace MaintInfo
        
         List<Equipement> equipements;
 
+
+        private void ValideChamps( bool b )
+        {
+            txtClient.Enabled = b;
+            txtAdresse.Enabled = b;
+            txtNomCentre.Enabled = b;
+            txtTel.Enabled = b;
+            cbSecteur.SelectedIndex = -1;
+            cbType.SelectedIndex = -1;
+            cbModele.SelectedIndex = -1;
+
+            btnAjouterEquipement.Visible = b;
+            btnAnnuler.Visible = b;
+            btnModifier.Visible = !b;
+            btnValider.Visible = b;
+
+            dgvEquipements.Enabled = b;
+
+            cbType.Visible = b;
+            cbModele.Visible = b;
+            txtNumSerie.Visible = b;
+            lblType.Visible = b;
+            lblNumSerie.Visible = b;
+            lblModele.Visible = b;
+
+
+        }
+
+        private void Mode( int choix )
+        {
+            switch ( choix  ) 
+            {
+                case 0: // mode lecture
+                    ValideChamps(false);
+
+                    break;
+                case 1: // mode modification
+                    ValideChamps(true);
+                 
+                    break;
+
+                case 2:// mode enregistrer
+                    ValideChamps(true);
+
+                    break;
+            }
+            
+
+        }
+
+
         public frmCentres()
         {
             InitializeComponent();
+            ValideChamps(true);
+            // Mode Ajout 
+
         }
 
         public frmCentres(Centre c)
         {
             InitializeComponent();
-
+            ValideChamps(false);
             try
             {
 
@@ -98,6 +152,25 @@ namespace MaintInfo
         private void frmCentres_FormClosing(object sender, FormClosingEventArgs e)
         {
             //e.Cancel = false;
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            ValideChamps(true);
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            ValideChamps(false);
+
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+           // if (btnModifier.Visible == false )
+
+            ValideChamps(false);
+
         }
     }
 }

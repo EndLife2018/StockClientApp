@@ -17,7 +17,7 @@ namespace MaintInfo
     public partial class frmClient : Form
     {
 
-        frmCentres centre = null;
+       
 
 
         private Client c; 

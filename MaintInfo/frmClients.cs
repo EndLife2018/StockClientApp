@@ -37,14 +37,11 @@ namespace MaintInfo
             {
               if (dgvClients.CurrentCell.ColumnIndex == 4  )
                 {
-                    if (centre == null)
-                    {
+                 
                         centre = new frmClient( (Client)bsClient.Current );
                         centre.MdiParent = frmMaintInfo.Main ;
                         centre.Show();
-                    }
-                    else
-                        centre.Activate();
+                 
                     
                     
                 }                    
@@ -60,14 +57,11 @@ namespace MaintInfo
 
         private void btnAjouterClient_Click(object sender, EventArgs e)
         {
-            if (centre == null)
-            {
+           
                 centre = new frmClient();
                 centre.MdiParent = frmMaintInfo.Main;
                 centre.Show();
-            }
-            else
-                centre.Activate();
+          
            
 
 

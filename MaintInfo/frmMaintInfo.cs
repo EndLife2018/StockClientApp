@@ -67,20 +67,17 @@ namespace MaintInfo
         private void mnuLogin_Click(object sender, EventArgs e)
         {
             frmLogin login = new frmLogin();
-            
+            login.MdiParent = this;
             login.Show();
         }
 
         private void mnuGererClient_Click(object sender, EventArgs e)
         {
-            if (clients == null)
-            {
+         
                 clients = new frmClients();
                 clients.MdiParent = this;
                 clients.Show();
-            }
-            else
-                clients.Activate();
+         
            
         }
     }
