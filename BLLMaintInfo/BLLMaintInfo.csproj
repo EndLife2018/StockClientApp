@@ -46,10 +46,13 @@
     <Compile Include="BLLModele.cs" />
     <Compile Include="BLLSecteur.cs" />
     <Compile Include="BLLType.cs" />
+    <Compile Include="Exceptions\BLLExceptionModele.cs" />
     <Compile Include="Exceptions\BLLExceptionsCentre.cs" />
     <Compile Include="Exceptions\BLLExceptionsClient.cs" />
     <Compile Include="Exceptions\BLLExceptions.cs" />
+    <Compile Include="Exceptions\BLLExceptionSecteur.cs" />
     <Compile Include="Exceptions\BLLExceptionsEquipement.cs" />
+    <Compile Include="Exceptions\BLLExceptionTypeEquipement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

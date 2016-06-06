@@ -34,14 +34,14 @@
             this.btnRechercher = new System.Windows.Forms.Button();
             this.lblClientNom = new System.Windows.Forms.Label();
             this.grpCentres = new System.Windows.Forms.GroupBox();
-            this.btnAjouterClient = new System.Windows.Forms.Button();
             this.dgvClients = new System.Windows.Forms.DataGridView();
-            this.bsClient = new System.Windows.Forms.BindingSource(this.components);
             this.numClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresseClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephoneClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Details = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bsClient = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAjouterClient = new System.Windows.Forms.Button();
             this.grpRechercher.SuspendLayout();
             this.grpCentres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
@@ -97,15 +97,6 @@
             this.grpCentres.TabStop = false;
             this.grpCentres.Text = "Liste  des clients";
             // 
-            // btnAjouterClient
-            // 
-            this.btnAjouterClient.Location = new System.Drawing.Point(430, 203);
-            this.btnAjouterClient.Name = "btnAjouterClient";
-            this.btnAjouterClient.Size = new System.Drawing.Size(132, 26);
-            this.btnAjouterClient.TabIndex = 1;
-            this.btnAjouterClient.Text = "AJOUTER CLIENT";
-            this.btnAjouterClient.UseVisualStyleBackColor = true;
-            // 
             // dgvClients
             // 
             this.dgvClients.AllowUserToAddRows = false;
@@ -125,10 +116,7 @@
             this.dgvClients.Size = new System.Drawing.Size(565, 150);
             this.dgvClients.TabIndex = 2;
             this.dgvClients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellClick);
-            // 
-            // bsClient
-            // 
-            this.bsClient.DataSource = typeof(BO.Client);
+            this.dgvClients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentClick);
             // 
             // numClientDataGridViewTextBoxColumn
             // 
@@ -166,6 +154,20 @@
             this.Details.Text = "Détails";
             this.Details.ToolTipText = "Détails";
             // 
+            // bsClient
+            // 
+            this.bsClient.DataSource = typeof(BO.Client);
+            // 
+            // btnAjouterClient
+            // 
+            this.btnAjouterClient.Location = new System.Drawing.Point(430, 203);
+            this.btnAjouterClient.Name = "btnAjouterClient";
+            this.btnAjouterClient.Size = new System.Drawing.Size(132, 26);
+            this.btnAjouterClient.TabIndex = 1;
+            this.btnAjouterClient.Text = "AJOUTER CLIENT";
+            this.btnAjouterClient.UseVisualStyleBackColor = true;
+            this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
+            // 
             // frmClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +177,7 @@
             this.Controls.Add(this.grpRechercher);
             this.Name = "frmClients";
             this.Text = "Clients";
+            this.Load += new System.EventHandler(this.frmClients_Load);
             this.grpRechercher.ResumeLayout(false);
             this.grpRechercher.PerformLayout();
             this.grpCentres.ResumeLayout(false);

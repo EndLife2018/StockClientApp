@@ -22,7 +22,7 @@ namespace DAO
             {
                 using (DbCommand cde = db.CreateCommand())
                 {
-                    cde.CommandText = "GetEquipementByIdCentre";
+                    cde.CommandText = "GetEquipementsByIdCentre";
                     cde.CommandType = CommandType.StoredProcedure;
 
                     DbParameter odbP1 = cde.CreateParameter();
@@ -43,13 +43,15 @@ namespace DAO
                                 int numSerie = reader.GetInt32(0);
                                 string nomModele = reader.GetString(1);
                                 int numModele = reader.GetInt32(2);
-                                double tarif = reader.GetDouble(3);
+                                decimal tarif = reader.GetDecimal(3);
                                 int codetarif = reader.GetInt32(4);
                                 string typeE = reader.GetString(5);
-                                int idtype = reader.GetInt32(6);
-                                DateTime dt = reader.GetDateTime(7);
-                                TypeEquipement te = new TypeEquipement(idtype,typeE );
-                                Tarif Letarif = new Tarif(tarif, dt);
+                                 int idtype = reader.GetInt32(6);
+
+                                 DateTime? dt = reader.GetDateTime(7);
+                                
+                                TypeEquipement te = new TypeEquipement(0,typeE );
+                                Tarif Letarif = new Tarif( Convert.ToDouble( tarif ) ,dt );
                                 Modele m = new Modele(numModele,nomModele ,Letarif ,te);
 
 

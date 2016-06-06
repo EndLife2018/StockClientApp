@@ -4,11 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Accès
+using BLLMaintInfo.Exceptions;
+using BO;
+using DAO;
+
+
 namespace BLL
 {
-    class BLLModele
+    public class BLLModele
     {
+        public List<Modele> GetAllModeleByType(int type )
+        {
+            DAOModele cdao = new DAOModele();
 
+
+            try
+            {
+                return cdao.GetAllModeleByType(type);
+
+            }
+            catch (Exception ex)
+            {
+                throw new BLLExceptionModele("[BLL] GetAllModeleByType : \n" + ex.Message, ex);
+            }
+
+        }
 
     }
 }

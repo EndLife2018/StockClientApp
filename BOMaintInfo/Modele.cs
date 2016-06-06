@@ -77,6 +77,12 @@ namespace BO
 
         }
 
+
+        public Modele Self
+        {
+            get { return this; }
+        }
+
         public Modele(int codeModele, string libelleModele, TypeEquipement te)
         {
             this.codeModele = codeModele;
@@ -104,7 +110,7 @@ namespace BO
 
         public override string ToString()
         {
-            return string.Format("Modele : {0} , {1}", codeModele, libelleModele);
+            return string.Format("Modele : {0} , {1} , {2} , {3} ", codeModele, libelleModele, te.LibelleType , tarif.Montant );
         }
 
     }

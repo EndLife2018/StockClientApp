@@ -18,6 +18,7 @@ namespace BLL
         {
             DAOEquipement cdao = new DAOEquipement();
 
+           
             try
             {
                 return cdao.GetEquipementByCentre(search);

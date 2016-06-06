@@ -52,7 +52,10 @@
     <Compile Include="Exceptions\DAOExceptionClient.cs" />
     <Compile Include="Exceptions\DAOExceptionConnection.cs" />
     <Compile Include="Exceptions\DAOExceptionEquipement.cs" />
+    <Compile Include="Exceptions\DAOExceptionModele.cs" />
     <Compile Include="Exceptions\DAOExceptions.cs" />
+    <Compile Include="Exceptions\DAOExceptionSecteur.cs" />
+    <Compile Include="Exceptions\DAOExceptionTypeEquipement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

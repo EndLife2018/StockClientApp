@@ -9,7 +9,7 @@ namespace BO
     public class Tarif
     {
         private double montant;
-        private DateTime date;
+        private DateTime? date;
 
         public double Montant
         {
@@ -24,7 +24,7 @@ namespace BO
             }
         }
 
-        public DateTime Date
+        public DateTime? Date
         {
             get
             {
@@ -37,7 +37,12 @@ namespace BO
             }
         }
 
-        public Tarif(double montant, DateTime date)
+        public Tarif Self
+        {
+            get{ return this; }
+        }
+
+        public Tarif(double montant, DateTime? date)
         {
             this.Montant = montant;
             this.Date = date;

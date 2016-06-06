@@ -49,6 +49,10 @@ namespace BO
 
         }
 
+        public TypeEquipement Self
+        {
+            get { return this; }
+        }
 
         public override bool Equals(object obj)
         {

@@ -16,6 +16,10 @@ namespace MaintInfo
 {
     public partial class frmClient : Form
     {
+
+        frmCentres centre = null;
+
+
         private Client c; 
 
         public frmClient()
@@ -78,6 +82,33 @@ namespace MaintInfo
             btnModifier.Text = "MODIFIER CLIENT";
             ValideChamp(false);
             btnAnnuler.Visible = false;
+        }
+
+        private void dgvCentre_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCentre.CurrentCell != null && dgvCentre.CurrentCell.RowIndex >= 0)
+            {
+                if (dgvCentre.CurrentCell.ColumnIndex == 5)
+                {
+
+                    frmCentres centre = new frmCentres((Centre)bsCentre.Current);
+                    centre.MdiParent = frmMaintInfo.Main; ;
+                    centre.Show();
+                }
+
+            }
+        }
+
+        private void dgvCentre_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAjouterCentre_Click(object sender, EventArgs e)
+        {
+            frmCentres centre = new frmCentres();
+            centre.MdiParent = frmMaintInfo.Main; ;
+            centre.Show();
         }
     }
 }

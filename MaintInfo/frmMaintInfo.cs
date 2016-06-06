@@ -44,6 +44,14 @@ namespace MaintInfo
     /// </summary>
     public partial class frmMaintInfo : Form
     {
+
+        
+        private frmClients clients = null ;
+        private static frmMaintInfo main = null;
+
+
+        public static frmMaintInfo Main { get { return main; } }
+
         public frmMaintInfo()
         {
             InitializeComponent();
@@ -53,7 +61,7 @@ namespace MaintInfo
 
         private void frmMaintInfo_Load(object sender, EventArgs e)
         {
-
+            main = this;
         }
 
         private void mnuLogin_Click(object sender, EventArgs e)
@@ -65,8 +73,15 @@ namespace MaintInfo
 
         private void mnuGererClient_Click(object sender, EventArgs e)
         {
-            frmClients clients = new frmClients();
-            clients.Show();
+            if (clients == null)
+            {
+                clients = new frmClients();
+                clients.MdiParent = this;
+                clients.Show();
+            }
+            else
+                clients.Activate();
+           
         }
     }
 }

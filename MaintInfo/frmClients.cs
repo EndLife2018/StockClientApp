@@ -16,6 +16,9 @@ namespace MaintInfo
 {
     public partial class frmClients : Form
     {
+
+        frmClient centre = null;
+
         public frmClients()
         {
             InitializeComponent();
@@ -32,14 +35,46 @@ namespace MaintInfo
         {
             if (dgvClients.CurrentCell != null && dgvClients.CurrentCell.RowIndex >= 0)
             {
-              if (dgvClients.CurrentCell.ColumnIndex == 4 )
+              if (dgvClients.CurrentCell.ColumnIndex == 4  )
                 {
-
-                    frmClient centre = new frmClient( (Client)bsClient.Current );
-                    centre.Show();
+                    if (centre == null)
+                    {
+                        centre = new frmClient( (Client)bsClient.Current );
+                        centre.MdiParent = frmMaintInfo.Main ;
+                        centre.Show();
+                    }
+                    else
+                        centre.Activate();
+                    
+                    
                 }                    
 
             }
+
+        }
+
+        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAjouterClient_Click(object sender, EventArgs e)
+        {
+            if (centre == null)
+            {
+                centre = new frmClient();
+                centre.MdiParent = frmMaintInfo.Main;
+                centre.Show();
+            }
+            else
+                centre.Activate();
+           
+
+
+        }
+
+        private void frmClients_Load(object sender, EventArgs e)
+        {
 
         }
     }
