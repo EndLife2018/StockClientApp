@@ -46,7 +46,21 @@
     <Compile Include="BLLModele.cs" />
     <Compile Include="BLLSecteur.cs" />
     <Compile Include="BLLType.cs" />
+    <Compile Include="Exceptions\BLLExceptionsCentre.cs" />
+    <Compile Include="Exceptions\BLLExceptionsClient.cs" />
+    <Compile Include="Exceptions\BLLExceptions.cs" />
+    <Compile Include="Exceptions\BLLExceptionsEquipement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOMaintInfo\BOMaintInfo.csproj">
+      <Project>{6adef9cb-6507-436c-b52c-0d278ab1c1d4}</Project>
+      <Name>BOMaintInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAOMaintInfo\DAOMaintInfo.csproj">
+      <Project>{707da309-fe4a-459d-9be0-3b9cbc0c9378}</Project>
+      <Name>DAOMaintInfo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

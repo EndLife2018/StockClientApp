@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Modele
+    public class Modele
     {
         private int codeModele;
         private string libelleModele;
-       
+        private Tarif tarif;
+        private TypeEquipement te;
+
+
         public Modele(int codeModele, string libelleModele)
         {
             this.codeModele = codeModele;
@@ -43,11 +46,51 @@ namespace BO
             }
         }
 
+        public TypeEquipement Te
+        {
+            get
+            {
+                return te;
+            }
+
+            set
+            {
+                te = value;
+            }
+        }
+
+        public Tarif Tarif
+        {
+            get
+            {
+                return tarif;
+            }
+
+            set
+            {
+                tarif = value;
+            }
+        }
+
         public Modele()
         {
 
         }
 
+        public Modele(int codeModele, string libelleModele, TypeEquipement te)
+        {
+            this.codeModele = codeModele;
+            this.libelleModele = libelleModele;
+            this.te = te;
+        }
+
+        public Modele(int codeModele, string libelleModele, Tarif tarif, TypeEquipement te)
+        {
+            this.codeModele = codeModele;
+            this.libelleModele = libelleModele;
+            this.tarif = tarif;
+            this.te = te;
+        }
 
         public override bool Equals(object obj)
         {

@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,11 +43,23 @@
   <ItemGroup>
     <Compile Include="DAOCentre.cs" />
     <Compile Include="DAOClient.cs" />
+    <Compile Include="DAOConnection.cs" />
     <Compile Include="DAOEquipement.cs" />
     <Compile Include="DAOModele.cs" />
     <Compile Include="DAOSecteur.cs" />
     <Compile Include="DAOType.cs" />
+    <Compile Include="Exceptions\DAOExceptionCentre.cs" />
+    <Compile Include="Exceptions\DAOExceptionClient.cs" />
+    <Compile Include="Exceptions\DAOExceptionConnection.cs" />
+    <Compile Include="Exceptions\DAOExceptionEquipement.cs" />
+    <Compile Include="Exceptions\DAOExceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOMaintInfo\BOMaintInfo.csproj">
+      <Project>{6adef9cb-6507-436c-b52c-0d278ab1c1d4}</Project>
+      <Name>BOMaintInfo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

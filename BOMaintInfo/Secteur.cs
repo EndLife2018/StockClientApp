@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Secteur
+    public class Secteur
     {
 
         private int codeSecteur;

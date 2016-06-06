@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Centre
+    public class Centre
     {
         private int numCentre;
         private string telCentre;
@@ -57,7 +57,7 @@ namespace BO
             }
         }
 
-        internal List<Equipement> Equipements
+        public List<Equipement> Equipements
         {
             get
             {
@@ -70,7 +70,7 @@ namespace BO
             }
         }
 
-        internal Secteur Secteur
+        public Secteur Secteur
         {
             get
             {
@@ -96,7 +96,7 @@ namespace BO
             }
         }
 
-        internal Modele Modele
+        public Modele Modele
         {
             get
             {
@@ -108,13 +108,13 @@ namespace BO
             }
         }
 
-        public Centre(int numCentre,string nomCentre, string telCentre, string adresseCentre, List<Equipement> equipements, Secteur secteur)
+        public Centre(int numCentre,string nomCentre, string telCentre, string adresseCentre, List<Equipement> lequipements, Secteur secteur)
         {
             this.nomCentre = nomCentre;
             this.numCentre = numCentre;
             this.telCentre = telCentre;
             this.adresseCentre = adresseCentre;
-            this.equipements = equipements;
+            this.Equipements = lequipements;
             this.secteur = secteur;
         }
 

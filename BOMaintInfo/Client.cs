@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Client
+   public class Client
     {
         private int numClient;
         private string nomClient;
@@ -67,6 +67,19 @@ namespace BO
             }
         }
 
+        internal List<Centre> Centres
+        {
+            get
+            {
+                return centres;
+            }
+
+            set
+            {
+                centres = value;
+            }
+        }
+
         public Client()
         {
 
@@ -81,6 +94,14 @@ namespace BO
 
         }
 
+        public Client(int numClient, string nomClient, string adresseClient, string telephoneClient, List<Centre> lcentres)
+        {
+            this.numClient = numClient;
+            this.nomClient = nomClient;
+            this.adresseClient = adresseClient;
+            this.telephoneClient = telephoneClient;
+            this.Centres = lcentres;
+        }
 
         public override bool Equals(object obj)
         {

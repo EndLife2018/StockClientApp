@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class TypeEquipement
+   public  class TypeEquipement
     {
         private int codeType;
         private string libelleType;

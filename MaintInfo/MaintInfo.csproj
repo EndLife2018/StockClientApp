@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCentres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCentres.Designer.cs">
+      <DependentUpon>frmCentres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClients.Designer.cs">
+      <DependentUpon>frmClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMaintInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +78,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCentres.resx">
+      <DependentUpon>frmCentres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClients.resx">
+      <DependentUpon>frmClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMaintInfo.resx">
       <DependentUpon>frmMaintInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\BO.Centre.datasource" />
+    <None Include="Properties\DataSources\BO.Client.datasource" />
+    <None Include="Properties\DataSources\BO.Equipement.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,6 +120,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icogmao.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLLMaintInfo\BLLMaintInfo.csproj">
+      <Project>{7bf703e0-7663-4d18-b924-a9a7705d6090}</Project>
+      <Name>BLLMaintInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BOMaintInfo\BOMaintInfo.csproj">
+      <Project>{6adef9cb-6507-436c-b52c-0d278ab1c1d4}</Project>
+      <Name>BOMaintInfo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

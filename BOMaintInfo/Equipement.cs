@@ -6,12 +6,30 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Equipement
+   public  class Equipement
     {
-        private TypeEquipement type;
+        //private TypeEquipement type;
         private Modele modele;
 
-      
-      
+       
+
+        public Modele Modele
+        {
+            get
+            {
+                return modele;
+            }
+
+            set
+            {
+                modele = value;
+            }
+        }
+
+        public Equipement( Modele modele)
+        {
+            //this.Type = type;
+            this.Modele = modele;
+        }
     }
 }

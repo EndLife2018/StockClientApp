@@ -31,18 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintInfo));
             this.menuAcceuil = new System.Windows.Forms.MenuStrip();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sidentifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmContrats = new System.Windows.Forms.ToolStripMenuItem();
-            this.consulterLesMissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compteRenduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuConsulterContrats = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGererClient = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmIntervention = new System.Windows.Forms.ToolStripMenuItem();
             this.entreprisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qualificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postesRechercherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deconnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gererLesCentresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAcceuil.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,47 +61,46 @@
             // connectionToolStripMenuItem
             // 
             this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sidentifierToolStripMenuItem,
-            this.quitterToolStripMenuItem});
+            this.mnuLogin,
+            this.mnuQuitter});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.connectionToolStripMenuItem.Text = "Connection";
             // 
-            // sidentifierToolStripMenuItem
+            // mnuLogin
             // 
-            this.sidentifierToolStripMenuItem.Name = "sidentifierToolStripMenuItem";
-            this.sidentifierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sidentifierToolStripMenuItem.Text = "S\'identifier";
+            this.mnuLogin.Name = "mnuLogin";
+            this.mnuLogin.Size = new System.Drawing.Size(152, 22);
+            this.mnuLogin.Text = "S\'identifier";
+            this.mnuLogin.Click += new System.EventHandler(this.mnuLogin_Click);
             // 
-            // quitterToolStripMenuItem
+            // mnuQuitter
             // 
-            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quitterToolStripMenuItem.Text = "Quitter";
+            this.mnuQuitter.Name = "mnuQuitter";
+            this.mnuQuitter.Size = new System.Drawing.Size(152, 22);
+            this.mnuQuitter.Text = "Quitter";
             // 
             // tsmContrats
             // 
             this.tsmContrats.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consulterLesMissionsToolStripMenuItem,
-            this.compteRenduToolStripMenuItem,
-            this.gererLesCentresToolStripMenuItem});
-            this.tsmContrats.Enabled = false;
+            this.mnuConsulterContrats,
+            this.mnuGererClient});
             this.tsmContrats.Name = "tsmContrats";
             this.tsmContrats.Size = new System.Drawing.Size(64, 20);
             this.tsmContrats.Text = "Contrats";
-            this.tsmContrats.Click += new System.EventHandler(this.gérerLesMissionsToolStripMenuItem_Click);
             // 
-            // consulterLesMissionsToolStripMenuItem
+            // mnuConsulterContrats
             // 
-            this.consulterLesMissionsToolStripMenuItem.Name = "consulterLesMissionsToolStripMenuItem";
-            this.consulterLesMissionsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.consulterLesMissionsToolStripMenuItem.Text = "Consulter Contrats";
+            this.mnuConsulterContrats.Name = "mnuConsulterContrats";
+            this.mnuConsulterContrats.Size = new System.Drawing.Size(173, 22);
+            this.mnuConsulterContrats.Text = "Consulter Contrats";
             // 
-            // compteRenduToolStripMenuItem
+            // mnuGererClient
             // 
-            this.compteRenduToolStripMenuItem.Name = "compteRenduToolStripMenuItem";
-            this.compteRenduToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.compteRenduToolStripMenuItem.Text = "Gérer les Clients";
+            this.mnuGererClient.Name = "mnuGererClient";
+            this.mnuGererClient.Size = new System.Drawing.Size(173, 22);
+            this.mnuGererClient.Text = "Gérer les Clients";
+            this.mnuGererClient.Click += new System.EventHandler(this.mnuGererClient_Click);
             // 
             // tsmIntervention
             // 
@@ -147,13 +145,6 @@
             this.deconnectionToolStripMenuItem.Text = "Deconnection";
             this.deconnectionToolStripMenuItem.Visible = false;
             // 
-            // gererLesCentresToolStripMenuItem
-            // 
-            this.gererLesCentresToolStripMenuItem.Name = "gererLesCentresToolStripMenuItem";
-            this.gererLesCentresToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.gererLesCentresToolStripMenuItem.Text = "Gerer les centres";
-            this.gererLesCentresToolStripMenuItem.Click += new System.EventHandler(this.gererLesCentresToolStripMenuItem_Click);
-            // 
             // frmMaintInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,7 +154,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "frmMaintInfo";
-            this.Text = "MaintInfo";
+            this.Text = "MaintInfo ( prototype) ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMaintInfo_Load);
             this.menuAcceuil.ResumeLayout(false);
             this.menuAcceuil.PerformLayout();
             this.ResumeLayout(false);
@@ -175,18 +168,17 @@
 
         private System.Windows.Forms.MenuStrip menuAcceuil;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sidentifierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuLogin;
+        private System.Windows.Forms.ToolStripMenuItem mnuQuitter;
         private System.Windows.Forms.ToolStripMenuItem tsmContrats;
-        private System.Windows.Forms.ToolStripMenuItem consulterLesMissionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem compteRenduToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuConsulterContrats;
+        private System.Windows.Forms.ToolStripMenuItem mnuGererClient;
         private System.Windows.Forms.ToolStripMenuItem tsmIntervention;
         private System.Windows.Forms.ToolStripMenuItem entreprisesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qualificationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem postesRechercherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deconnectionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gererLesCentresToolStripMenuItem;
     }
 }
 
