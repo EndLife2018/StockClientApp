@@ -32,5 +32,14 @@ namespace BLL
 
         }
 
+        public List<Centre> ListeCentresParClient(int numClient)
+        {
+           
+                CentreManager centre = new CentreManager();
+                return  centre.GetCentres(numClient);
+
+
+      
+        }
     }
 }

@@ -35,13 +35,14 @@
             this.lblClientNom = new System.Windows.Forms.Label();
             this.grpCentres = new System.Windows.Forms.GroupBox();
             this.dgvClients = new System.Windows.Forms.DataGridView();
-            this.bsClient = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAjouterClient = new System.Windows.Forms.Button();
             this.numClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresseClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephoneClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Details = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bsClient = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAjouterClient = new System.Windows.Forms.Button();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.grpRechercher.SuspendLayout();
             this.grpCentres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
@@ -88,6 +89,7 @@
             // 
             // grpCentres
             // 
+            this.grpCentres.Controls.Add(this.btnQuitter);
             this.grpCentres.Controls.Add(this.dgvClients);
             this.grpCentres.Controls.Add(this.btnAjouterClient);
             this.grpCentres.Location = new System.Drawing.Point(12, 74);
@@ -116,20 +118,6 @@
             this.dgvClients.Size = new System.Drawing.Size(565, 150);
             this.dgvClients.TabIndex = 2;
             this.dgvClients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellClick);
-            // 
-            // bsClient
-            // 
-            this.bsClient.DataSource = typeof(BO.Client);
-            // 
-            // btnAjouterClient
-            // 
-            this.btnAjouterClient.Location = new System.Drawing.Point(430, 203);
-            this.btnAjouterClient.Name = "btnAjouterClient";
-            this.btnAjouterClient.Size = new System.Drawing.Size(132, 26);
-            this.btnAjouterClient.TabIndex = 1;
-            this.btnAjouterClient.Text = "AJOUTER CLIENT";
-            this.btnAjouterClient.UseVisualStyleBackColor = true;
-            this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
             // 
             // numClientDataGridViewTextBoxColumn
             // 
@@ -167,6 +155,30 @@
             this.Details.Text = "Détails";
             this.Details.UseColumnTextForButtonValue = true;
             // 
+            // bsClient
+            // 
+            this.bsClient.DataSource = typeof(BO.Client);
+            // 
+            // btnAjouterClient
+            // 
+            this.btnAjouterClient.Location = new System.Drawing.Point(430, 203);
+            this.btnAjouterClient.Name = "btnAjouterClient";
+            this.btnAjouterClient.Size = new System.Drawing.Size(132, 26);
+            this.btnAjouterClient.TabIndex = 1;
+            this.btnAjouterClient.Text = "AJOUTER CLIENT";
+            this.btnAjouterClient.UseVisualStyleBackColor = true;
+            this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
+            // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Location = new System.Drawing.Point(17, 203);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(132, 26);
+            this.btnQuitter.TabIndex = 3;
+            this.btnQuitter.Text = "QUITTER";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // frmClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,5 +213,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn adresseClientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telephoneClientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Details;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }

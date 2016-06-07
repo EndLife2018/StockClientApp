@@ -45,13 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvEquipements = new System.Windows.Forms.DataGridView();
-            this.codeModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bsTypeEquipement = new System.Windows.Forms.BindingSource(this.components);
-            this.libelleModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.bsTarif = new System.Windows.Forms.BindingSource(this.components);
-            this.Supprime = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bsModele = new System.Windows.Forms.BindingSource(this.components);
             this.btnAjouterEquipement = new System.Windows.Forms.Button();
             this.cbModele = new System.Windows.Forms.ComboBox();
@@ -60,19 +54,25 @@
             this.cbType = new System.Windows.Forms.ComboBox();
             this.lblNumSerie = new System.Windows.Forms.Label();
             this.txtNumSerie = new System.Windows.Forms.TextBox();
+            this.bsEquipement = new System.Windows.Forms.BindingSource(this.components);
+            this.bsTarif = new System.Windows.Forms.BindingSource(this.components);
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
-            this.bsEquipement = new System.Windows.Forms.BindingSource(this.components);
             this.btnRetour = new System.Windows.Forms.Button();
+            this.Num = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.libelleModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Supprime = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpClient.SuspendLayout();
             this.grpDetailsCentre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsSecteur)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquipements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTypeEquipement)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsTarif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsModele)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquipement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTarif)).BeginInit();
             this.SuspendLayout();
             // 
             // grpClient
@@ -230,8 +230,8 @@
             this.dgvEquipements.AutoGenerateColumns = false;
             this.dgvEquipements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEquipements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codeModeleDataGridViewTextBoxColumn,
-            this.teDataGridViewTextBoxColumn,
+            this.Num,
+            this.Type,
             this.libelleModeleDataGridViewTextBoxColumn,
             this.tarifDataGridViewTextBoxColumn,
             this.Supprime});
@@ -242,63 +242,9 @@
             this.dgvEquipements.Size = new System.Drawing.Size(653, 239);
             this.dgvEquipements.TabIndex = 8;
             // 
-            // codeModeleDataGridViewTextBoxColumn
-            // 
-            this.codeModeleDataGridViewTextBoxColumn.DataPropertyName = "CodeModele";
-            this.codeModeleDataGridViewTextBoxColumn.HeaderText = "CodeModele";
-            this.codeModeleDataGridViewTextBoxColumn.Name = "codeModeleDataGridViewTextBoxColumn";
-            this.codeModeleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codeModeleDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // teDataGridViewTextBoxColumn
-            // 
-            this.teDataGridViewTextBoxColumn.DataPropertyName = "Te";
-            this.teDataGridViewTextBoxColumn.DataSource = this.bsTypeEquipement;
-            this.teDataGridViewTextBoxColumn.DisplayMember = "LibelleType";
-            this.teDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.teDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.teDataGridViewTextBoxColumn.Name = "teDataGridViewTextBoxColumn";
-            this.teDataGridViewTextBoxColumn.ReadOnly = true;
-            this.teDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.teDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.teDataGridViewTextBoxColumn.ValueMember = "Self";
-            // 
             // bsTypeEquipement
             // 
             this.bsTypeEquipement.DataSource = typeof(BO.TypeEquipement);
-            // 
-            // libelleModeleDataGridViewTextBoxColumn
-            // 
-            this.libelleModeleDataGridViewTextBoxColumn.DataPropertyName = "LibelleModele";
-            this.libelleModeleDataGridViewTextBoxColumn.HeaderText = "Libelle ";
-            this.libelleModeleDataGridViewTextBoxColumn.Name = "libelleModeleDataGridViewTextBoxColumn";
-            this.libelleModeleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tarifDataGridViewTextBoxColumn
-            // 
-            this.tarifDataGridViewTextBoxColumn.DataPropertyName = "Tarif";
-            this.tarifDataGridViewTextBoxColumn.DataSource = this.bsTarif;
-            this.tarifDataGridViewTextBoxColumn.DisplayMember = "Montant";
-            this.tarifDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.tarifDataGridViewTextBoxColumn.HeaderText = "Tarif";
-            this.tarifDataGridViewTextBoxColumn.Name = "tarifDataGridViewTextBoxColumn";
-            this.tarifDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tarifDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.tarifDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.tarifDataGridViewTextBoxColumn.ValueMember = "Self";
-            // 
-            // bsTarif
-            // 
-            this.bsTarif.DataSource = typeof(BO.Tarif);
-            // 
-            // Supprime
-            // 
-            this.Supprime.DataPropertyName = "CodeModele";
-            this.Supprime.HeaderText = "Supprimer";
-            this.Supprime.Name = "Supprime";
-            this.Supprime.ReadOnly = true;
-            this.Supprime.Text = "Supprimer";
-            this.Supprime.ToolTipText = "Supprimer";
             // 
             // bsModele
             // 
@@ -368,6 +314,14 @@
             this.txtNumSerie.Size = new System.Drawing.Size(164, 20);
             this.txtNumSerie.TabIndex = 0;
             // 
+            // bsEquipement
+            // 
+            this.bsEquipement.DataSource = typeof(BO.Equipement);
+            // 
+            // bsTarif
+            // 
+            this.bsTarif.DataSource = typeof(BO.Tarif);
+            // 
             // btnAnnuler
             // 
             this.btnAnnuler.Location = new System.Drawing.Point(66, 598);
@@ -388,10 +342,6 @@
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
-            // bsEquipement
-            // 
-            this.bsEquipement.DataSource = typeof(BO.Equipement);
-            // 
             // btnRetour
             // 
             this.btnRetour.Location = new System.Drawing.Point(257, 601);
@@ -401,6 +351,63 @@
             this.btnRetour.Text = "RETOUR";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Visible = false;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // Num
+            // 
+            this.Num.AutoComplete = false;
+            this.Num.DataPropertyName = "Self";
+            this.Num.DataSource = this.bsEquipement;
+            this.Num.DisplayMember = "NumSerie";
+            this.Num.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Num.HeaderText = "Num";
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Num.ValueMember = "Self";
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Te";
+            this.Type.DataSource = this.bsTypeEquipement;
+            this.Type.DisplayMember = "LibelleType";
+            this.Type.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Type.ValueMember = "Self";
+            // 
+            // libelleModeleDataGridViewTextBoxColumn
+            // 
+            this.libelleModeleDataGridViewTextBoxColumn.DataPropertyName = "LibelleModele";
+            this.libelleModeleDataGridViewTextBoxColumn.HeaderText = "LibelleModele";
+            this.libelleModeleDataGridViewTextBoxColumn.Name = "libelleModeleDataGridViewTextBoxColumn";
+            this.libelleModeleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tarifDataGridViewTextBoxColumn
+            // 
+            this.tarifDataGridViewTextBoxColumn.DataPropertyName = "Tarif";
+            this.tarifDataGridViewTextBoxColumn.DataSource = this.bsTarif;
+            this.tarifDataGridViewTextBoxColumn.DisplayMember = "Montant";
+            this.tarifDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.tarifDataGridViewTextBoxColumn.HeaderText = "Tarif";
+            this.tarifDataGridViewTextBoxColumn.Name = "tarifDataGridViewTextBoxColumn";
+            this.tarifDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tarifDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tarifDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.tarifDataGridViewTextBoxColumn.ValueMember = "Self";
+            // 
+            // Supprime
+            // 
+            this.Supprime.DataPropertyName = "CodeModele";
+            this.Supprime.HeaderText = "Supprimer";
+            this.Supprime.Name = "Supprime";
+            this.Supprime.ReadOnly = true;
+            this.Supprime.Text = "Supprimer";
+            this.Supprime.ToolTipText = "Supprimer";
+            this.Supprime.UseColumnTextForButtonValue = true;
             // 
             // frmCentres
             // 
@@ -426,9 +433,9 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquipements)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTypeEquipement)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsTarif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsModele)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquipement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTarif)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,11 +472,11 @@
         private System.Windows.Forms.BindingSource bsTarif;
         private System.Windows.Forms.BindingSource bsTypeEquipement;
         private System.Windows.Forms.BindingSource bsSecteur;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeModeleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn teDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Num;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn tarifDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Supprime;
-        private System.Windows.Forms.Button btnRetour;
     }
 }

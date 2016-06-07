@@ -39,6 +39,8 @@ namespace BO
             }
         }
 
+        public Equipement Self { get { return this;  } }
+
         public Equipement( Modele modele)
         {
             //this.Type = type;

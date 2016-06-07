@@ -15,10 +15,12 @@ namespace MaintInfo
 {
     public partial class frmCentres : Form
     {
-        Centre centre;
-       
+        private Centre centre;
+        private GestionClients ctrlClient;
         List<Equipement> equipements;
 
+        //=================================================================================================================
+        // GEstion des Methodes 
 
         private void ValideChamps( bool b )
         {
@@ -44,6 +46,7 @@ namespace MaintInfo
             lblNumSerie.Visible = b;
             lblModele.Visible = b;
 
+            btnRetour.Visible = !b; 
 
         }
 
@@ -69,6 +72,8 @@ namespace MaintInfo
 
         }
 
+        //==========================================================================================================
+        // GEstion chargement feuille
 
         public frmCentres()
         {
@@ -132,7 +137,7 @@ namespace MaintInfo
             
             }
                        
-            bsModele.DataSource = m;
+            bsModele.DataSource = m; 
             bsTarif.DataSource = t;
             
 
@@ -156,6 +161,11 @@ namespace MaintInfo
             //e.Cancel = false;
         }
 
+
+        //===============================================================================================================
+        // Gestion des Boutons
+
+
         private void btnModifier_Click(object sender, EventArgs e)
         {
             ValideChamps(true);
@@ -166,6 +176,9 @@ namespace MaintInfo
             ValideChamps(false);
 
         }
+
+
+
 
         private void btnValider_Click(object sender, EventArgs e)
         {
@@ -200,6 +213,11 @@ namespace MaintInfo
         private void btnAjouterEquipement_Click(object sender, EventArgs e)
         {
           //  bsEquipement.Add(new Equipement(new Modele(codeModele, libelleModele, tarif, type)) ;
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

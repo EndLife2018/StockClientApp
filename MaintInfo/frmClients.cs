@@ -63,6 +63,12 @@ namespace MaintInfo
 
         }
 
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //====================================================================================================
         // Gerer DataGridView
 
@@ -88,7 +94,6 @@ namespace MaintInfo
             }
 
         }
-
 
     }
     

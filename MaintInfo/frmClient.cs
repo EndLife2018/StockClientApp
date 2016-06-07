@@ -17,8 +17,9 @@ namespace MaintInfo
     public partial class frmClient : Form
     {
 
-       
 
+
+        private GestionClients ctrlClients;
 
         private Client c = null;
         private enum Mode { LECTURE , AJOUT, MODIFICATION };
@@ -88,8 +89,10 @@ namespace MaintInfo
 
                 try
                 {
-                    CentreManager centre = new CentreManager();
-                    bsCentre.DataSource = centre.GetCentres(c.NumClient);
+                    
+                    ctrlClients = new GestionClients();
+                    bsCentre.DataSource =  ctrlClients.ListeCentresParClient(c.NumClient);
+
                 }
                 catch (Exception ex)
                 {
@@ -222,7 +225,7 @@ namespace MaintInfo
         {
             if (dgvCentre.CurrentCell != null && dgvCentre.CurrentCell.RowIndex >= 0)
             {
-                if (dgvCentre.CurrentCell.ColumnIndex == 5)
+                if (dgvCentre.CurrentCell.ColumnIndex == 4)
                 {
                   
                         frmCentres centre = new frmCentres((Centre)bsCentre.Current);
