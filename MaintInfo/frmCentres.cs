@@ -31,7 +31,7 @@ namespace MaintInfo
             cbSecteur.SelectedIndex = -1;
             cbType.SelectedIndex = -1;
             cbModele.SelectedIndex = -1;
-
+            cbSecteur.Enabled = b;
             btnAjouterEquipement.Visible = b;
             btnAnnuler.Visible = b;
             btnModifier.Visible = !b;
@@ -80,6 +80,9 @@ namespace MaintInfo
             InitializeComponent();
             ValideChamps(true);
             // Mode Ajout 
+            bsSecteur.DataSource = new SecteurManager().GetAllSecteur();
+            bsModele.DataSource = new ModeleManager().GetAllModele();
+            bsTypeEquipement.DataSource = new TypeManager().GetAllTypeEquipement();
 
         }
 
@@ -92,7 +95,7 @@ namespace MaintInfo
             {
 
                 bsSecteur.DataSource = new SecteurManager().GetAllSecteur();
-
+                bsModele.DataSource = new ModeleManager().GetAllModele();
                 bsTypeEquipement.DataSource = new TypeManager().GetAllTypeEquipement();
                 
                 // modele
@@ -132,12 +135,12 @@ namespace MaintInfo
           
             foreach (Equipement e in equipements)
             {
-                m.Add(e.Modele);
+               // m.Add(e.Modele);
                 t.Add(e.Modele.Tarif);
             
             }
             
-            bsModele.DataSource = m; 
+           // bsModele.DataSource = m; 
             bsTarif.DataSource = t;
             
 
@@ -212,12 +215,26 @@ namespace MaintInfo
 
         private void btnAjouterEquipement_Click(object sender, EventArgs e)
         {
-          //  bsEquipement.Add(new Equipement(new Modele(codeModele, libelleModele, tarif, type)) ;
+            bsEquipement.Add(new Equipement(new Modele( ((Modele)cbModele.SelectedItem).CodeModele , ((Modele)cbModele.SelectedItem).LibelleModele ) , int.Parse(txtNumSerie.Text)  ) ) ;
+
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvEquipements_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvEquipements.CurrentCell != null && dgvEquipements.CurrentCell.RowIndex >= 0)
+            {
+                if (dgvEquipements.CurrentCell.ColumnIndex == 2)
+                {
+                    //MessageBox.Show("Supprimer cette ligne \n" + dgvEquipements.CurrentRow   );
+                    bsEquipement.RemoveCurrent();
+                }
+
+            }
         }
     }
 }
