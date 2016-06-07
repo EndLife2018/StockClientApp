@@ -10,26 +10,27 @@ using BLLMaintInfo.Exceptions;
 using BO;
 using DAO;
 
+
 namespace BLL
 {
-    public class BLLSecteur
+    public class TypeManager
     {
-
-        public List<Secteur> GetAllSecteur()
+        public List<TypeEquipement> GetAllTypeEquipement()
         {
-            DAOSecteur cdao = new DAOSecteur();
+            DAOType cdao = new DAOType();
 
 
             try
             {
-                return cdao.GetAllSecteur();
+                return cdao.GetAllTypeEquipement();
 
             }
             catch (Exception ex)
             {
-                throw new BLLExceptionSecteur("[BLL] GetAllSecteur : \n" + ex.Message, ex);
+                throw new BLLExceptionTypeEquipement("[BLL] GetAllTypeEquipement : \n" + ex.Message, ex);
             }
 
         }
+
     }
 }

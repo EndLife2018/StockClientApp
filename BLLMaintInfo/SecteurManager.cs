@@ -4,32 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 //Accès
 using BLLMaintInfo.Exceptions;
 using BO;
 using DAO;
 
-
 namespace BLL
 {
-    public class BLLModele
+    public class SecteurManager
     {
-        public List<Modele> GetAllModeleByType(int type )
+
+        public List<Secteur> GetAllSecteur()
         {
-            DAOModele cdao = new DAOModele();
+            DAOSecteur cdao = new DAOSecteur();
 
 
             try
             {
-                return cdao.GetAllModeleByType(type);
+                return cdao.GetAllSecteur();
 
             }
             catch (Exception ex)
             {
-                throw new BLLExceptionModele("[BLL] GetAllModeleByType : \n" + ex.Message, ex);
+                throw new BLLExceptionSecteur("[BLL] GetAllSecteur : \n" + ex.Message, ex);
             }
 
         }
-
     }
 }

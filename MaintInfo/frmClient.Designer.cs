@@ -32,25 +32,26 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.grpCentres = new System.Windows.Forms.GroupBox();
             this.dgvCentre = new System.Windows.Forms.DataGridView();
-            this.numCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adresseCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.secteurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Detail = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bsCentre = new System.Windows.Forms.BindingSource(this.components);
             this.btnAjouterCentre = new System.Windows.Forms.Button();
             this.grpRechercher = new System.Windows.Forms.GroupBox();
             this.txtClient = new System.Windows.Forms.TextBox();
             this.lblClientNom = new System.Windows.Forms.Label();
             this.grpAjouter = new System.Windows.Forms.GroupBox();
-            this.btnAnnuler = new System.Windows.Forms.Button();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAdresse = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.btnRetour = new System.Windows.Forms.Button();
+            this.numCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adresseCentreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detail = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpCentres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCentre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCentre)).BeginInit();
@@ -90,7 +91,6 @@
             this.nomCentreDataGridViewTextBoxColumn,
             this.telCentreDataGridViewTextBoxColumn,
             this.adresseCentreDataGridViewTextBoxColumn,
-            this.secteurDataGridViewTextBoxColumn,
             this.Detail});
             this.dgvCentre.DataSource = this.bsCentre;
             this.dgvCentre.Location = new System.Drawing.Point(6, 31);
@@ -100,49 +100,6 @@
             this.dgvCentre.TabIndex = 2;
             this.dgvCentre.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCentre_CellClick);
             this.dgvCentre.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCentre_CellContentClick);
-            // 
-            // numCentreDataGridViewTextBoxColumn
-            // 
-            this.numCentreDataGridViewTextBoxColumn.DataPropertyName = "NumCentre";
-            this.numCentreDataGridViewTextBoxColumn.HeaderText = "NumCentre";
-            this.numCentreDataGridViewTextBoxColumn.Name = "numCentreDataGridViewTextBoxColumn";
-            this.numCentreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numCentreDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nomCentreDataGridViewTextBoxColumn
-            // 
-            this.nomCentreDataGridViewTextBoxColumn.DataPropertyName = "NomCentre";
-            this.nomCentreDataGridViewTextBoxColumn.HeaderText = "NomCentre";
-            this.nomCentreDataGridViewTextBoxColumn.Name = "nomCentreDataGridViewTextBoxColumn";
-            this.nomCentreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telCentreDataGridViewTextBoxColumn
-            // 
-            this.telCentreDataGridViewTextBoxColumn.DataPropertyName = "TelCentre";
-            this.telCentreDataGridViewTextBoxColumn.HeaderText = "TelCentre";
-            this.telCentreDataGridViewTextBoxColumn.Name = "telCentreDataGridViewTextBoxColumn";
-            this.telCentreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // adresseCentreDataGridViewTextBoxColumn
-            // 
-            this.adresseCentreDataGridViewTextBoxColumn.DataPropertyName = "AdresseCentre";
-            this.adresseCentreDataGridViewTextBoxColumn.HeaderText = "AdresseCentre";
-            this.adresseCentreDataGridViewTextBoxColumn.Name = "adresseCentreDataGridViewTextBoxColumn";
-            this.adresseCentreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // secteurDataGridViewTextBoxColumn
-            // 
-            this.secteurDataGridViewTextBoxColumn.DataPropertyName = "Secteur";
-            this.secteurDataGridViewTextBoxColumn.HeaderText = "Secteur";
-            this.secteurDataGridViewTextBoxColumn.Name = "secteurDataGridViewTextBoxColumn";
-            this.secteurDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Detail
-            // 
-            this.Detail.DataPropertyName = "NumCentre";
-            this.Detail.HeaderText = "Détails";
-            this.Detail.Name = "Detail";
-            this.Detail.ReadOnly = true;
             // 
             // bsCentre
             // 
@@ -189,7 +146,6 @@
             // 
             // grpAjouter
             // 
-            this.grpAjouter.Controls.Add(this.btnAnnuler);
             this.grpAjouter.Controls.Add(this.txtTel);
             this.grpAjouter.Controls.Add(this.label1);
             this.grpAjouter.Controls.Add(this.txtAdresse);
@@ -202,17 +158,6 @@
             this.grpAjouter.TabIndex = 6;
             this.grpAjouter.TabStop = false;
             this.grpAjouter.Text = "Ajouter/ Modifier / Consulter";
-            // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.Location = new System.Drawing.Point(525, 61);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(132, 29);
-            this.btnAnnuler.TabIndex = 10;
-            this.btnAnnuler.Text = "ANNULER";
-            this.btnAnnuler.UseVisualStyleBackColor = true;
-            this.btnAnnuler.Visible = false;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // txtTel
             // 
@@ -265,16 +210,88 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nom :";
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.Location = new System.Drawing.Point(88, 485);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(132, 35);
+            this.btnAnnuler.TabIndex = 10;
+            this.btnAnnuler.Text = "ANNULER";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Visible = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
+            // btnValider
+            // 
+            this.btnValider.Location = new System.Drawing.Point(471, 485);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(132, 35);
+            this.btnValider.TabIndex = 11;
+            this.btnValider.Text = "VALIDER";
+            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Visible = false;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
+            // 
+            // btnRetour
+            // 
+            this.btnRetour.Location = new System.Drawing.Point(281, 485);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(132, 35);
+            this.btnRetour.TabIndex = 12;
+            this.btnRetour.Text = "RETOUR";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Visible = false;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // numCentreDataGridViewTextBoxColumn
+            // 
+            this.numCentreDataGridViewTextBoxColumn.DataPropertyName = "NumCentre";
+            this.numCentreDataGridViewTextBoxColumn.HeaderText = "NumCentre";
+            this.numCentreDataGridViewTextBoxColumn.Name = "numCentreDataGridViewTextBoxColumn";
+            this.numCentreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numCentreDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nomCentreDataGridViewTextBoxColumn
+            // 
+            this.nomCentreDataGridViewTextBoxColumn.DataPropertyName = "NomCentre";
+            this.nomCentreDataGridViewTextBoxColumn.HeaderText = "NomCentre";
+            this.nomCentreDataGridViewTextBoxColumn.Name = "nomCentreDataGridViewTextBoxColumn";
+            this.nomCentreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telCentreDataGridViewTextBoxColumn
+            // 
+            this.telCentreDataGridViewTextBoxColumn.DataPropertyName = "TelCentre";
+            this.telCentreDataGridViewTextBoxColumn.HeaderText = "TelCentre";
+            this.telCentreDataGridViewTextBoxColumn.Name = "telCentreDataGridViewTextBoxColumn";
+            this.telCentreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // adresseCentreDataGridViewTextBoxColumn
+            // 
+            this.adresseCentreDataGridViewTextBoxColumn.DataPropertyName = "AdresseCentre";
+            this.adresseCentreDataGridViewTextBoxColumn.HeaderText = "AdresseCentre";
+            this.adresseCentreDataGridViewTextBoxColumn.Name = "adresseCentreDataGridViewTextBoxColumn";
+            this.adresseCentreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Detail
+            // 
+            this.Detail.DataPropertyName = "NumCentre";
+            this.Detail.HeaderText = "Détails";
+            this.Detail.Name = "Detail";
+            this.Detail.ReadOnly = true;
+            // 
             // frmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 464);
+            this.ClientSize = new System.Drawing.Size(695, 545);
+            this.Controls.Add(this.btnRetour);
+            this.Controls.Add(this.btnValider);
+            this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.grpAjouter);
             this.Controls.Add(this.grpCentres);
             this.Controls.Add(this.grpRechercher);
             this.Name = "frmClient";
-            this.Text = "frmClient";
+            this.Text = "Le Client";
             this.Load += new System.EventHandler(this.frmClient_Load);
             this.grpCentres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCentre)).EndInit();
@@ -305,11 +322,12 @@
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnRetour;
         private System.Windows.Forms.DataGridViewTextBoxColumn numCentreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomCentreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telCentreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn adresseCentreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secteurDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Detail;
     }
 }

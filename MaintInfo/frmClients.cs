@@ -17,20 +17,61 @@ namespace MaintInfo
     public partial class frmClients : Form
     {
 
+        //Declaration du formulaire Client
         frmClient centre = null;
+        // Déclaraation du controleur
+        GestionClients ctrlClients = null ;
+
 
         public frmClients()
         {
             InitializeComponent();
         }
 
-        private void btnRechercher_Click(object sender, EventArgs e)
-        {
-            BLLClient clt = new BLLClient();
 
-            bsClient.DataSource = clt.Rechercher(txtClient.Text);
+        private void frmClients_Load(object sender, EventArgs e)
+        {
+            //
+            //instancer le controleur
+            ctrlClients = new GestionClients() ;
         }
 
+        //====================================================================================================
+        // Gerer les boutons
+
+
+        private void btnRechercher_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                bsClient.DataSource = ctrlClients.RechercherClients(txtClient.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nCe Formulaire va se fermer");
+                this.Close();
+            }
+        }
+
+        private void btnAjouterClient_Click(object sender, EventArgs e)
+        {
+
+            centre = new frmClient();
+            centre.MdiParent = frmMaintInfo.Main;
+            centre.Show();
+
+        }
+
+        //====================================================================================================
+        // Gerer DataGridView
+
+
+        /// <summary>
+        /// AFFICHAGE DU DETAILS DU CLIENT SELECTIONNE
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvClients.CurrentCell != null && dgvClients.CurrentCell.RowIndex >= 0)
@@ -38,11 +79,9 @@ namespace MaintInfo
               if (dgvClients.CurrentCell.ColumnIndex == 4  )
                 {
                  
-                        centre = new frmClient( (Client)bsClient.Current );
-                        centre.MdiParent = frmMaintInfo.Main ;
-                        centre.Show();
-                 
-                    
+                    centre = new frmClient( (Client)bsClient.Current );
+                    centre.MdiParent = frmMaintInfo.Main ;
+                    centre.Show();
                     
                 }                    
 
@@ -50,27 +89,7 @@ namespace MaintInfo
 
         }
 
-        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void btnAjouterClient_Click(object sender, EventArgs e)
-        {
-           
-                centre = new frmClient();
-                centre.MdiParent = frmMaintInfo.Main;
-                centre.Show();
-          
-           
-
-
-        }
-
-        private void frmClients_Load(object sender, EventArgs e)
-        {
-
-        }
     }
     
 }

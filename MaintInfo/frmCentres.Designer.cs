@@ -63,6 +63,7 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.bsEquipement = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRetour = new System.Windows.Forms.Button();
             this.grpClient.SuspendLayout();
             this.grpDetailsCentre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsSecteur)).BeginInit();
@@ -124,7 +125,7 @@
             this.grpDetailsCentre.Controls.Add(this.label2);
             this.grpDetailsCentre.Location = new System.Drawing.Point(12, 87);
             this.grpDetailsCentre.Name = "grpDetailsCentre";
-            this.grpDetailsCentre.Size = new System.Drawing.Size(688, 136);
+            this.grpDetailsCentre.Size = new System.Drawing.Size(664, 136);
             this.grpDetailsCentre.TabIndex = 3;
             this.grpDetailsCentre.TabStop = false;
             this.grpDetailsCentre.Text = "Détails du Centre";
@@ -215,9 +216,9 @@
             this.groupBox2.Controls.Add(this.cbType);
             this.groupBox2.Controls.Add(this.lblNumSerie);
             this.groupBox2.Controls.Add(this.txtNumSerie);
-            this.groupBox2.Location = new System.Drawing.Point(12, 259);
+            this.groupBox2.Location = new System.Drawing.Point(12, 229);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(683, 333);
+            this.groupBox2.Size = new System.Drawing.Size(664, 363);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Equipement";
@@ -238,7 +239,7 @@
             this.dgvEquipements.Location = new System.Drawing.Point(6, 104);
             this.dgvEquipements.Name = "dgvEquipements";
             this.dgvEquipements.ReadOnly = true;
-            this.dgvEquipements.Size = new System.Drawing.Size(653, 200);
+            this.dgvEquipements.Size = new System.Drawing.Size(653, 239);
             this.dgvEquipements.TabIndex = 8;
             // 
             // codeModeleDataGridViewTextBoxColumn
@@ -311,6 +312,7 @@
             this.btnAjouterEquipement.TabIndex = 7;
             this.btnAjouterEquipement.Text = "AJOUTER Equi.";
             this.btnAjouterEquipement.UseVisualStyleBackColor = true;
+            this.btnAjouterEquipement.Click += new System.EventHandler(this.btnAjouterEquipement_Click);
             // 
             // cbModele
             // 
@@ -368,7 +370,7 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(142, 598);
+            this.btnAnnuler.Location = new System.Drawing.Point(66, 598);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(107, 38);
             this.btnAnnuler.TabIndex = 8;
@@ -378,7 +380,7 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(362, 598);
+            this.btnValider.Location = new System.Drawing.Point(460, 598);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(107, 38);
             this.btnValider.TabIndex = 7;
@@ -390,11 +392,22 @@
             // 
             this.bsEquipement.DataSource = typeof(BO.Equipement);
             // 
+            // btnRetour
+            // 
+            this.btnRetour.Location = new System.Drawing.Point(257, 601);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(132, 35);
+            this.btnRetour.TabIndex = 13;
+            this.btnRetour.Text = "RETOUR";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Visible = false;
+            // 
             // frmCentres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 659);
+            this.ClientSize = new System.Drawing.Size(687, 659);
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.groupBox2);
@@ -457,5 +470,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn tarifDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Supprime;
+        private System.Windows.Forms.Button btnRetour;
     }
 }

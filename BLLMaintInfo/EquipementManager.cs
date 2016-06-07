@@ -11,7 +11,7 @@ using DAO;
 
 namespace BLL
 {
-    public class BLLEquipement
+    public class EquipementManager
     {
 
         public List<Equipement> GetEquipements(int search)

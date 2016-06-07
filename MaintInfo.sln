@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintInfo", "MaintInfo\MaintInfo.csproj", "{B963B537-570E-45F8-9030-4A30A4DBCA59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAOMaintInfo", "DAOMaintInfo\DAOMaintInfo.csproj", "{707DA309-FE4A-459D-9BE0-3B9CBC0C9378}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALMaintInfo", "DAOMaintInfo\DALMaintInfo.csproj", "{707DA309-FE4A-459D-9BE0-3B9CBC0C9378}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLLMaintInfo", "BLLMaintInfo\BLLMaintInfo.csproj", "{7BF703E0-7663-4D18-B924-A9A7705D6090}"
 EndProject

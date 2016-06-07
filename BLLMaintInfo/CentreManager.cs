@@ -11,7 +11,7 @@ using DAO;
 
 namespace BLL
 {
-    public class BLLCentre
+    public class CentreManager
     {
         public List<Centre> GetCentres(int search)
         {

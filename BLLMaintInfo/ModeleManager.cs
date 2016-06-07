@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 //Accès
 using BLLMaintInfo.Exceptions;
 using BO;
@@ -13,21 +12,21 @@ using DAO;
 
 namespace BLL
 {
-    public class BLLType
+    public class ModeleManager
     {
-        public List<TypeEquipement> GetAllTypeEquipement()
+        public List<Modele> GetAllModeleByType(int type )
         {
-            DAOType cdao = new DAOType();
+            DAOModele cdao = new DAOModele();
 
 
             try
             {
-                return cdao.GetAllTypeEquipement();
+                return cdao.GetAllModeleByType(type);
 
             }
             catch (Exception ex)
             {
-                throw new BLLExceptionTypeEquipement("[BLL] GetAllTypeEquipement : \n" + ex.Message, ex);
+                throw new BLLExceptionModele("[BLL] GetAllModeleByType : \n" + ex.Message, ex);
             }
 
         }

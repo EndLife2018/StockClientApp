@@ -40,12 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLLCentre.cs" />
-    <Compile Include="BLLClient.cs" />
-    <Compile Include="BLLEquipement.cs" />
-    <Compile Include="BLLModele.cs" />
-    <Compile Include="BLLSecteur.cs" />
-    <Compile Include="BLLType.cs" />
+    <Compile Include="CentreManager.cs" />
+    <Compile Include="ClientManager.cs" />
+    <Compile Include="EquipementManager.cs" />
+    <Compile Include="ModeleManager.cs" />
+    <Compile Include="SecteurManager.cs" />
+    <Compile Include="TypeManager.cs" />
     <Compile Include="Exceptions\BLLExceptionModele.cs" />
     <Compile Include="Exceptions\BLLExceptionsCentre.cs" />
     <Compile Include="Exceptions\BLLExceptionsClient.cs" />
@@ -53,6 +53,7 @@
     <Compile Include="Exceptions\BLLExceptionSecteur.cs" />
     <Compile Include="Exceptions\BLLExceptionsEquipement.cs" />
     <Compile Include="Exceptions\BLLExceptionTypeEquipement.cs" />
+    <Compile Include="GestionClients.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +61,9 @@
       <Project>{6adef9cb-6507-436c-b52c-0d278ab1c1d4}</Project>
       <Name>BOMaintInfo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAOMaintInfo\DAOMaintInfo.csproj">
+    <ProjectReference Include="..\DAOMaintInfo\DALMaintInfo.csproj">
       <Project>{707da309-fe4a-459d-9be0-3b9cbc0c9378}</Project>
-      <Name>DAOMaintInfo</Name>
+      <Name>DALMaintInfo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

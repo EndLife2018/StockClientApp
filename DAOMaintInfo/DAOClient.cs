@@ -20,59 +20,59 @@ namespace DAO
         /// 
         /// </summary>
         /// <param name="p"></param>
-        //public void AddProductToCatalogue(Produit p)
-        //{
-        //    //  c.AddProduit(p);
+        public void AddClient( Client c)
+        {
+            //  c.AddProduit(p);
 
-        //    using (DbConnection db = ConnectionDAO.GetConnexion())
-        //    {
-        //        using (DbCommand cde = db.CreateCommand())
-        //        {
-        //            cde.CommandText = "[dbo].[AddProduit]";
-        //            cde.CommandType = CommandType.StoredProcedure;
-
-
-        //            // CPU
-        //            DbParameter odbP1 = cde.CreateParameter();
-        //            odbP1.DbType = System.Data.DbType.Int32;
-        //            odbP1.Direction = System.Data.ParameterDirection.Input;
-        //            odbP1.ParameterName = "@cpu";
-        //            odbP1.Value = p.Cpu;
-        //            cde.Parameters.Add(odbP1);
-        //            // Libelle
-        //            DbParameter odbP2 = cde.CreateParameter();
-        //            odbP2.DbType = System.Data.DbType.String;
-        //            odbP2.Direction = System.Data.ParameterDirection.Input;
-        //            odbP2.ParameterName = "@libelle";
-        //            odbP2.Value = p.Libelle;
-        //            cde.Parameters.Add(odbP2);
-
-        //            // Prix
-        //            DbParameter odbP3 = cde.CreateParameter();
-        //            odbP3.DbType = System.Data.DbType.Double;
-        //            odbP3.Direction = System.Data.ParameterDirection.Input;
-        //            odbP3.ParameterName = "@prix";
-        //            odbP3.Value = p.Prix;
-        //            cde.Parameters.Add(odbP3);
+            using (DbConnection db = DAOConnection.GetConnexion())
+            {
+                using (DbCommand cde = db.CreateCommand())
+                {
+                    cde.CommandText = "[dbo].[AddClient]";
+                    cde.CommandType = CommandType.StoredProcedure;
 
 
-        //            try
-        //            {
-        //                int n = cde.ExecuteNonQuery();
+                    // CPU
+                    DbParameter odbP1 = cde.CreateParameter();
+                    odbP1.DbType = System.Data.DbType.String;
+                    odbP1.Direction = System.Data.ParameterDirection.Input;
+                    odbP1.ParameterName = "@nom";
+                    odbP1.Value = c.NomClient;
+                    cde.Parameters.Add(odbP1);
+                    // Libelle
+                    DbParameter odbP2 = cde.CreateParameter();
+                    odbP2.DbType = System.Data.DbType.String;
+                    odbP2.Direction = System.Data.ParameterDirection.Input;
+                    odbP2.ParameterName = "@adresse";
+                    odbP2.Value = c.AdresseClient;
+                    cde.Parameters.Add(odbP2);
 
-        //                // Pour ne pas obliger chaque proc sto Insert à retourner un identifiant int
-        //                // on pourrait retourner la valeur du dernier parametre sous forme d'objet
+                    // Prix
+                    DbParameter odbP3 = cde.CreateParameter();
+                    odbP3.DbType = System.Data.DbType.String;
+                    odbP3.Direction = System.Data.ParameterDirection.Input;
+                    odbP3.ParameterName = "@tel";
+                    odbP3.Value = c.TelephoneClient;
+                    cde.Parameters.Add(odbP3);
 
-        //            }
-        //            catch (DbException de)
-        //            {
-        //                throw new DAOCatalogue("[DAO] AddProduct \n" + de.Message, de);
-        //            }
 
-        //        } // fin using command
-        //    }// fin using connection
+                    try
+                    {
+                        int n = cde.ExecuteNonQuery();
 
-        //}
+                        // Pour ne pas obliger chaque proc sto Insert à retourner un identifiant int
+                        // on pourrait retourner la valeur du dernier parametre sous forme d'objet
+
+                    }
+                    catch (DbException de)
+                    {
+                        throw new DAOExceptionClient("[DAO] AddClient \n" + de.Message, de);
+                    }
+
+                } // fin using command
+            }// fin using connection
+
+        }
 
 
         ///// <summary>

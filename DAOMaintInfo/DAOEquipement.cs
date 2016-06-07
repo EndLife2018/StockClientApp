@@ -46,7 +46,7 @@ namespace DAO
                                 decimal tarif = reader.GetDecimal(3);
                                 int codetarif = reader.GetInt32(4);
                                 string typeE = reader.GetString(5);
-                                 int idtype = reader.GetInt32(6);
+                                int idtype = reader.GetInt32(6);
 
                                  DateTime? dt = reader.GetDateTime(7);
                                 
@@ -55,7 +55,7 @@ namespace DAO
                                 Modele m = new Modele(numModele,nomModele ,Letarif ,te);
 
 
-                                Equipement e = new Equipement(m);
+                                Equipement e = new Equipement(m,numSerie);
 
                                 lstEqui.Add(e);
                             }

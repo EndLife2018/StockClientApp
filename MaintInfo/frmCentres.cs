@@ -82,12 +82,17 @@ namespace MaintInfo
         {
             InitializeComponent();
             ValideChamps(false);
+
             try
             {
 
-                bsSecteur.DataSource = new BLLSecteur().GetAllSecteur();
+                bsSecteur.DataSource = new SecteurManager().GetAllSecteur();
 
-                bsTypeEquipement.DataSource = new BLLType().GetAllTypeEquipement();
+                bsTypeEquipement.DataSource = new TypeManager().GetAllTypeEquipement();
+                
+                // modele
+
+                // Tarif
 
             }
             catch ( Exception ex)
@@ -102,46 +107,43 @@ namespace MaintInfo
 
             centre = c;
 
-            
-           
-            bsEquipement.DataSource = new BLLEquipement().GetEquipements(c.NumCentre);
+            try
+            {
+                equipements = new List<Equipement>();
+                equipements = new EquipementManager().GetEquipements(c.NumCentre);
+                //try
+                bsEquipement.DataSource = equipements;
+                //catch
 
-            equipements = new List<Equipement>();
-
-            //try
-            equipements.AddRange(equipements );
-            //catch
-            
-
-
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+               
+            // remplissage des binding sources pour complete l'affichage du data grid          
             List<Modele> m = new List<Modele>();
             List<Tarif> t = new List<Tarif>();
           
-
             foreach (Equipement e in equipements)
             {
                 m.Add(e.Modele);
                 t.Add(e.Modele.Tarif);
-             //   typeE.Add(e.Modele.Te);
-            }
-                
             
+            }
+                       
             bsModele.DataSource = m;
             bsTarif.DataSource = t;
-            //bsTypeEquipement.DataSource = typeE;
             
-
-
 
             // Remplissage manuel des champs 
             txtClient.Text = c.NomCentre;
             txtNomCentre.Text = c.NomCentre;
             txtTel.Text = c.TelCentre;
             txtAdresse.Text = c.AdresseCentre;
-            //cbSecteur.SelectedIndex = c.Secteur.CodeSecteur;
-
-
-
+            cbSecteur.SelectedItem = c.Secteur;
+            
+            
         }
 
         private void frmCentres_Load(object sender, EventArgs e)
@@ -171,6 +173,33 @@ namespace MaintInfo
 
             ValideChamps(false);
 
+            //Verifiaction des champs 
+            //NomCentre
+            //Tel
+            //Adresse
+            //Secteur
+
+            //creation instance Centre 
+            //centre= new Centre( Nom, numero client, ((Secteur) (cdsecteur.selecteditem)).idsecteur ,tel,adresse )
+
+            //ADDCentre en DAO 
+            //AddCentre( centre ) ;
+            //Recupère le numèreo si tous ok
+            //creer une instance liste equipement
+            // foreach ( ligne in dgv )
+                // equipements.Add( ligne, numserie, ... , code retour id Add cleint )
+                // DAO
+                //AddEquipements
+            
+
+
+
+
+        }
+
+        private void btnAjouterEquipement_Click(object sender, EventArgs e)
+        {
+          //  bsEquipement.Add(new Equipement(new Modele(codeModele, libelleModele, tarif, type)) ;
         }
     }
 }

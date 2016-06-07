@@ -11,8 +11,12 @@ using DAO;
 
 namespace BLL
 {
-    public class BLLClient
+    public class ClientManager
     {
+
+        private DAOClient cdao;
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -20,7 +24,7 @@ namespace BLL
         /// <returns></returns>
         public List<Client> Rechercher(string search)
         {
-            DAOClient cdao = new DAOClient();
+            cdao = new DAOClient();
 
             try
             {
@@ -30,6 +34,27 @@ namespace BLL
             catch (Exception ex)
             {
                 throw new BLLExceptionsClient("[BLL] Rechercher : \n" + ex.Message, ex);
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public void AddCLient(Client c)
+        {
+            cdao = new DAOClient();
+
+            try
+            {
+                cdao.AddClient(c);
+
+            }
+            catch (Exception ex)
+            {
+                throw new BLLExceptionsClient("[BLL] AddClient : \n" + ex.Message, ex);
             }
 
         }
