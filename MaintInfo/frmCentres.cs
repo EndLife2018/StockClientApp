@@ -229,12 +229,16 @@ namespace MaintInfo
                         centre = tmp;
                         centre.NumCentre = i;
 
-                        
-                        //Ajout liste equipements 
-                        foreach ( Equipement equi in bsEquipement )
+
+                        if (i != 0 && bsEquipement.Count != 0)
                         {
-                            equi.Centre = new Centre { NumCentre = i } ;
-                            int f = ctrlClient.AjouterEquipement(equi);
+                            //Ajout liste equipements 
+                            foreach (Equipement equi in bsEquipement)
+                            {
+                                equi.Centre = new Centre { NumCentre = i };
+                                int f = ctrlClient.AjouterEquipement(equi);
+                            }
+
                         }
 
                         mode = Mode.LECTURE;
@@ -260,15 +264,21 @@ namespace MaintInfo
 
                         centre = tmp;
                         centre.NumCentre = i;
-
-
+                                               
                         ctrlClient.DelEquipement(i);
-                        //Ajout liste equipements 
-                        foreach (Equipement equi in bsEquipement)
+
+                        if ( i != 0 && bsEquipement.Count !=0 )
                         {
-                            equi.Centre = new Centre { NumCentre = i };
-                            int f = ctrlClient.AjouterEquipement(equi);
+                            
+                            //Ajout liste equipements 
+                            foreach (Equipement equi in bsEquipement)
+                            {
+                                equi.Centre = new Centre { NumCentre = i };
+                                int f = ctrlClient.AjouterEquipement(equi);
+                            }
+
                         }
+
 
                         mode = Mode.LECTURE;
                         Affichage(mode);

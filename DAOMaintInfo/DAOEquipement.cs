@@ -162,7 +162,7 @@ namespace DAO
                     DbParameter odbP3 = cde.CreateParameter();
                     odbP3.DbType = System.Data.DbType.Int32;
                     odbP3.Direction = System.Data.ParameterDirection.Input;
-                    odbP3.ParameterName = "@numcentre";
+                    odbP3.ParameterName = "@idCentre";
                     odbP3.Value = centre;
                     cde.Parameters.Add(odbP3);
 

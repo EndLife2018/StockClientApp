@@ -31,8 +31,6 @@ namespace MaintInfo
 
         private void frmClients_Load(object sender, EventArgs e)
         {
-            //
-            //instancer le controleur
             ctrlClients = new GestionClients() ;
         }
 

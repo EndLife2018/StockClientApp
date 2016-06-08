@@ -169,7 +169,7 @@ namespace MaintInfo
                     if (Validation() )
                     {
                         ctrlClients = new GestionClients();
-
+                        if (client == null) client = new Client();
                         client.AdresseClient = txtAdresse.Text;
                         client.NomClient = txtNom.Text;
                         client.TelephoneClient = txtTel.Text;
