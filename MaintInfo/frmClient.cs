@@ -21,11 +21,12 @@ namespace MaintInfo
 
         private GestionClients ctrlClients;
 
-        private Client c = null;
+        private Client client = null;// sauvegarde
         private enum Mode { LECTURE , AJOUT, MODIFICATION };
         private Mode mode;
 
         //======================================================================================================
+        // GEstion methode interne
 
         private void Affichage(Mode m)
         {
@@ -34,23 +35,27 @@ namespace MaintInfo
         }
 
 
-        private static void ErreurSaisie(Control txtSaisie, string message)
+        public bool Validation()
         {
-            // affichage des messages d'erreur avec mise en évidence de l'erreur
-            MessageBox.Show(message);
-            if (txtSaisie is TextBox)
-            {
-                ((TextBox)txtSaisie).SelectionStart = 0;
-                ((TextBox)txtSaisie).SelectionLength = txtSaisie.Text.Length;
-            }
-            if (txtSaisie != null) txtSaisie.Focus();
-        }
+            bool test = false;
 
+            //1 Test si un consultant a été sélectionné
+            if (txtNom.Text == string.Empty)
+                MessageBox.Show("Veuillez remplir le champ Nom");
+            else if (txtAdresse.Text == string.Empty)
+                MessageBox.Show("Veuillez remplir le champ Adresse");
+            else if (txtTel.Text == string.Empty)
+                MessageBox.Show("Veuillez remplir le champ Téléphone");
+            else
+                test = true;
+
+            return test;
+        }
 
         private void ValideChamp(bool b)
         {
             txtAdresse.Enabled = b;
-            txtClient.Enabled = b;
+           
             txtNom.Enabled = b;
             txtTel.Enabled = b;
             //dgvCentre.Enabled = b;
@@ -58,7 +63,7 @@ namespace MaintInfo
             btnValider.Visible = b;
             btnRetour.Visible = !b;
             btnModifier.Visible = !b;
-
+            btnAjouterCentre.Visible = !b;
         }
 
         //=======================================================================================================
@@ -76,22 +81,22 @@ namespace MaintInfo
         {
             InitializeComponent();
 
-            c = clt;
+            client = clt;
             mode = Mode.LECTURE ;
 
             Affichage(mode);
-            if (c != null)
+            if (client != null)
             {
-                txtClient.Text = c.NomClient;
-                txtAdresse.Text = c.AdresseClient;
-                txtNom.Text = c.NomClient;
-                txtTel.Text = c.TelephoneClient;
+                
+                txtAdresse.Text = client.AdresseClient;
+                txtNom.Text = client.NomClient;
+                txtTel.Text = client.TelephoneClient;
 
                 try
                 {
                     
                     ctrlClients = new GestionClients();
-                    bsCentre.DataSource =  ctrlClients.ListeCentresParClient(c.NumClient);
+                    bsCentre.DataSource =  ctrlClients.ListeCentresParClient(client.NumClient);
 
                 }
                 catch (Exception ex)
@@ -142,35 +147,13 @@ namespace MaintInfo
 
         private void btnAjouterCentre_Click(object sender, EventArgs e)
         {
-            frmCentres centre = new frmCentres();
+            frmCentres centre = new frmCentres(client, null );
             centre.MdiParent = frmMaintInfo.Main; ;
             centre.Show();
         }
 
 
 
-        public bool Validation()
-        {
-            bool test = false;
-           
-            //1 Test si un consultant a été sélectionné
-            //if (consultant.SelectedIndex == -1)
-            //    ErreurSaisie(consultant, "Consultant non sélectionné");
-            ////2 Test si une date a été sélectionné
-            //else if (!debut.HasValue)
-            //    ErreurSaisie(null, "Sélectionné une Date");
-            ////3 Test si une qualification a été sélectionné
-            //else if (qualification.SelectedIndex == -1)
-            //    ErreurSaisie(qualification, "Sélectionné un champ");
-            ////4 Test si une rémunération a été rentré et si elle est au format décimal
-            //else if (remun.Text != string.Empty && !decimal.TryParse(remun.Text, out remu))
-            //    ErreurSaisie(remun, "Rentrez un valeur décimal");
-            ////5 Test si une date a été selectionné et un motif sélectionné 
-            // else
-            //    test = true;
-
-            return test;
-        }
 
 
 
@@ -178,15 +161,36 @@ namespace MaintInfo
         {
             //>Vaalidation Champs SAisie
 
-            if (mode == Mode.AJOUT)
+            if (mode == Mode.AJOUT )
             {
                 try
                 {
                     //ADDClient
-                    ClientManager clt = new ClientManager();
+                    if (Validation() )
+                    {
+                        ctrlClients = new GestionClients();
 
-                    clt.AddCLient(c);
-                    MessageBox.Show("Enregistrement du client", "Validation");
+                        client.AdresseClient = txtAdresse.Text;
+                        client.NomClient = txtNom.Text;
+                        client.TelephoneClient = txtTel.Text;
+
+                        try
+                        {
+                            int i = ctrlClients.AjouterClient( client );
+                            MessageBox.Show("Enregistrement du client", "Validation");
+                            client.NumClient = i;
+                        }
+                        catch( Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                        mode = Mode.LECTURE;
+                        Affichage(mode);
+
+
+                    }
+  
                 }
                 catch( Exception ex  )
                 {
@@ -199,9 +203,17 @@ namespace MaintInfo
             {
                 try
                 {
+                    ctrlClients = new GestionClients();
                     //UpdateClient
-
-                    MessageBox.Show("Modification du client Effectué", "Validation");
+                    Client tmp = new Client(client.NumClient, txtNom.Text, txtAdresse.Text, txtTel.Text);
+                    int i = ctrlClients.UpdateClient(tmp);
+                    if (i != -1)
+                    {
+                        MessageBox.Show("Modification du client Effectué", "Validation");
+                        client = tmp;
+                        mode = Mode.LECTURE;
+                        Affichage(mode);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -209,8 +221,7 @@ namespace MaintInfo
                 }
                 
             }
-            mode = Mode.LECTURE;
-            Affichage(mode);
+   
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -221,19 +232,21 @@ namespace MaintInfo
         //==================================================================================================
         // Data Grid View
 
+        /// <summary>
+        /// Appuis sur le bouton Détails du client
+        /// Affiche le formulaire Centre , avec l'instance du centre en parametre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvCentre_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCentre.CurrentCell != null && dgvCentre.CurrentCell.RowIndex >= 0)
             {
                 if (dgvCentre.CurrentCell.ColumnIndex == 4)
                 {
-                  
-                        frmCentres centre = new frmCentres((Centre)bsCentre.Current);
+                        frmCentres centre = new frmCentres(client , (Centre)bsCentre.Current);
                         centre.MdiParent = frmMaintInfo.Main; ;
                         centre.Show();
-
-                 
-                    
                 }
 
             }
@@ -244,6 +257,14 @@ namespace MaintInfo
 
         }
 
-       
+        private void frmClient_Activated(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void frmClient_Enter(object sender, EventArgs e)
+        {
+            dgvCentre.Update();
+        }
     }
 }

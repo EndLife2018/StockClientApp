@@ -45,31 +45,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvEquipements = new System.Windows.Forms.DataGridView();
-            this.bsTypeEquipement = new System.Windows.Forms.BindingSource(this.components);
+            this.numSerieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bsModele = new System.Windows.Forms.BindingSource(this.components);
+            this.Supprime = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bsEquipement = new System.Windows.Forms.BindingSource(this.components);
             this.btnAjouterEquipement = new System.Windows.Forms.Button();
             this.cbModele = new System.Windows.Forms.ComboBox();
             this.lblModele = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
+            this.bsTypeEquipement = new System.Windows.Forms.BindingSource(this.components);
             this.lblNumSerie = new System.Windows.Forms.Label();
             this.txtNumSerie = new System.Windows.Forms.TextBox();
-            this.bsEquipement = new System.Windows.Forms.BindingSource(this.components);
             this.bsTarif = new System.Windows.Forms.BindingSource(this.components);
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.numSerieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Supprime = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpClient.SuspendLayout();
             this.grpDetailsCentre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsSecteur)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquipements)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsTypeEquipement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsModele)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquipement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTypeEquipement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTarif)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,15 +80,15 @@
             this.grpClient.Controls.Add(this.lblClient);
             this.grpClient.Location = new System.Drawing.Point(12, 12);
             this.grpClient.Name = "grpClient";
-            this.grpClient.Size = new System.Drawing.Size(688, 56);
+            this.grpClient.Size = new System.Drawing.Size(564, 56);
             this.grpClient.TabIndex = 1;
             this.grpClient.TabStop = false;
             // 
             // btnModifier
             // 
-            this.btnModifier.Location = new System.Drawing.Point(495, 20);
+            this.btnModifier.Location = new System.Drawing.Point(427, 21);
             this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(75, 23);
+            this.btnModifier.Size = new System.Drawing.Size(122, 23);
             this.btnModifier.TabIndex = 3;
             this.btnModifier.Text = "MODIFIER";
             this.btnModifier.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             this.grpDetailsCentre.Controls.Add(this.label2);
             this.grpDetailsCentre.Location = new System.Drawing.Point(12, 87);
             this.grpDetailsCentre.Name = "grpDetailsCentre";
-            this.grpDetailsCentre.Size = new System.Drawing.Size(664, 136);
+            this.grpDetailsCentre.Size = new System.Drawing.Size(564, 96);
             this.grpDetailsCentre.TabIndex = 3;
             this.grpDetailsCentre.TabStop = false;
             this.grpDetailsCentre.Text = "Détails du Centre";
@@ -134,7 +134,7 @@
             this.cbSecteur.DisplayMember = "LibelleSecteur";
             this.cbSecteur.Enabled = false;
             this.cbSecteur.FormattingEnabled = true;
-            this.cbSecteur.Location = new System.Drawing.Point(104, 101);
+            this.cbSecteur.Location = new System.Drawing.Point(385, 61);
             this.cbSecteur.Name = "cbSecteur";
             this.cbSecteur.Size = new System.Drawing.Size(164, 21);
             this.cbSecteur.TabIndex = 14;
@@ -147,6 +147,7 @@
             // 
             this.txtTel.Enabled = false;
             this.txtTel.Location = new System.Drawing.Point(385, 29);
+            this.txtTel.MaxLength = 10;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(164, 20);
             this.txtTel.TabIndex = 9;
@@ -164,6 +165,7 @@
             // 
             this.txtAdresse.Enabled = false;
             this.txtAdresse.Location = new System.Drawing.Point(104, 61);
+            this.txtAdresse.MaxLength = 50;
             this.txtAdresse.Name = "txtAdresse";
             this.txtAdresse.Size = new System.Drawing.Size(164, 20);
             this.txtAdresse.TabIndex = 4;
@@ -171,7 +173,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 101);
+            this.label4.Location = new System.Drawing.Point(316, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 3;
@@ -190,6 +192,7 @@
             // 
             this.txtNomCentre.Enabled = false;
             this.txtNomCentre.Location = new System.Drawing.Point(104, 29);
+            this.txtNomCentre.MaxLength = 30;
             this.txtNomCentre.Name = "txtNomCentre";
             this.txtNomCentre.Size = new System.Drawing.Size(164, 20);
             this.txtNomCentre.TabIndex = 1;
@@ -213,9 +216,9 @@
             this.groupBox2.Controls.Add(this.cbType);
             this.groupBox2.Controls.Add(this.lblNumSerie);
             this.groupBox2.Controls.Add(this.txtNumSerie);
-            this.groupBox2.Location = new System.Drawing.Point(12, 229);
+            this.groupBox2.Location = new System.Drawing.Point(12, 189);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(664, 363);
+            this.groupBox2.Size = new System.Drawing.Size(564, 363);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Equipement";
@@ -234,21 +237,51 @@
             this.dgvEquipements.Location = new System.Drawing.Point(6, 104);
             this.dgvEquipements.Name = "dgvEquipements";
             this.dgvEquipements.ReadOnly = true;
-            this.dgvEquipements.Size = new System.Drawing.Size(653, 245);
+            this.dgvEquipements.Size = new System.Drawing.Size(543, 245);
             this.dgvEquipements.TabIndex = 8;
             this.dgvEquipements.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEquipements_CellClick);
             // 
-            // bsTypeEquipement
+            // numSerieDataGridViewTextBoxColumn
             // 
-            this.bsTypeEquipement.DataSource = typeof(BO.TypeEquipement);
+            this.numSerieDataGridViewTextBoxColumn.DataPropertyName = "NumSerie";
+            this.numSerieDataGridViewTextBoxColumn.HeaderText = "NumSerie";
+            this.numSerieDataGridViewTextBoxColumn.Name = "numSerieDataGridViewTextBoxColumn";
+            this.numSerieDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // modeleDataGridViewTextBoxColumn
+            // 
+            this.modeleDataGridViewTextBoxColumn.DataPropertyName = "Modele";
+            this.modeleDataGridViewTextBoxColumn.DataSource = this.bsModele;
+            this.modeleDataGridViewTextBoxColumn.DisplayMember = "LibelleModele";
+            this.modeleDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.modeleDataGridViewTextBoxColumn.HeaderText = "Modele";
+            this.modeleDataGridViewTextBoxColumn.Name = "modeleDataGridViewTextBoxColumn";
+            this.modeleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modeleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.modeleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.modeleDataGridViewTextBoxColumn.ValueMember = "Self";
             // 
             // bsModele
             // 
             this.bsModele.DataSource = typeof(BO.Modele);
             // 
+            // Supprime
+            // 
+            this.Supprime.DataPropertyName = "CodeModele";
+            this.Supprime.HeaderText = "Supprimer";
+            this.Supprime.Name = "Supprime";
+            this.Supprime.ReadOnly = true;
+            this.Supprime.Text = "Supprimer";
+            this.Supprime.ToolTipText = "Supprimer";
+            this.Supprime.UseColumnTextForButtonValue = true;
+            // 
+            // bsEquipement
+            // 
+            this.bsEquipement.DataSource = typeof(BO.Equipement);
+            // 
             // btnAjouterEquipement
             // 
-            this.btnAjouterEquipement.Location = new System.Drawing.Point(495, 64);
+            this.btnAjouterEquipement.Location = new System.Drawing.Point(406, 64);
             this.btnAjouterEquipement.Name = "btnAjouterEquipement";
             this.btnAjouterEquipement.Size = new System.Drawing.Size(143, 26);
             this.btnAjouterEquipement.TabIndex = 7;
@@ -261,15 +294,15 @@
             this.cbModele.DataSource = this.bsModele;
             this.cbModele.DisplayMember = "LibelleModele";
             this.cbModele.FormattingEnabled = true;
-            this.cbModele.Location = new System.Drawing.Point(468, 29);
+            this.cbModele.Location = new System.Drawing.Point(385, 27);
             this.cbModele.Name = "cbModele";
-            this.cbModele.Size = new System.Drawing.Size(170, 21);
+            this.cbModele.Size = new System.Drawing.Size(164, 21);
             this.cbModele.TabIndex = 5;
             // 
             // lblModele
             // 
             this.lblModele.AutoSize = true;
-            this.lblModele.Location = new System.Drawing.Point(382, 32);
+            this.lblModele.Location = new System.Drawing.Point(316, 24);
             this.lblModele.Name = "lblModele";
             this.lblModele.Size = new System.Drawing.Size(48, 13);
             this.lblModele.TabIndex = 4;
@@ -294,6 +327,10 @@
             this.cbType.Size = new System.Drawing.Size(164, 21);
             this.cbType.TabIndex = 2;
             // 
+            // bsTypeEquipement
+            // 
+            this.bsTypeEquipement.DataSource = typeof(BO.TypeEquipement);
+            // 
             // lblNumSerie
             // 
             this.lblNumSerie.AutoSize = true;
@@ -306,13 +343,10 @@
             // txtNumSerie
             // 
             this.txtNumSerie.Location = new System.Drawing.Point(104, 61);
+            this.txtNumSerie.MaxLength = 10;
             this.txtNumSerie.Name = "txtNumSerie";
             this.txtNumSerie.Size = new System.Drawing.Size(164, 20);
             this.txtNumSerie.TabIndex = 0;
-            // 
-            // bsEquipement
-            // 
-            this.bsEquipement.DataSource = typeof(BO.Equipement);
             // 
             // bsTarif
             // 
@@ -320,7 +354,7 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(66, 598);
+            this.btnAnnuler.Location = new System.Drawing.Point(61, 558);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(107, 38);
             this.btnAnnuler.TabIndex = 8;
@@ -330,7 +364,7 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(460, 598);
+            this.btnValider.Location = new System.Drawing.Point(418, 558);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(107, 38);
             this.btnValider.TabIndex = 7;
@@ -340,50 +374,20 @@
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(257, 601);
+            this.btnRetour.Location = new System.Drawing.Point(225, 558);
             this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(132, 35);
+            this.btnRetour.Size = new System.Drawing.Size(120, 35);
             this.btnRetour.TabIndex = 13;
             this.btnRetour.Text = "RETOUR";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Visible = false;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
-            // numSerieDataGridViewTextBoxColumn
-            // 
-            this.numSerieDataGridViewTextBoxColumn.DataPropertyName = "NumSerie";
-            this.numSerieDataGridViewTextBoxColumn.HeaderText = "NumSerie";
-            this.numSerieDataGridViewTextBoxColumn.Name = "numSerieDataGridViewTextBoxColumn";
-            this.numSerieDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // modeleDataGridViewTextBoxColumn
-            // 
-            this.modeleDataGridViewTextBoxColumn.DataPropertyName = "Modele";
-            this.modeleDataGridViewTextBoxColumn.DataSource = this.bsModele;
-            this.modeleDataGridViewTextBoxColumn.DisplayMember = "LibelleModele";
-            this.modeleDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.modeleDataGridViewTextBoxColumn.HeaderText = "Modele";
-            this.modeleDataGridViewTextBoxColumn.Name = "modeleDataGridViewTextBoxColumn";
-            this.modeleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modeleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.modeleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.modeleDataGridViewTextBoxColumn.ValueMember = "Self";
-            // 
-            // Supprime
-            // 
-            this.Supprime.DataPropertyName = "CodeModele";
-            this.Supprime.HeaderText = "Supprimer";
-            this.Supprime.Name = "Supprime";
-            this.Supprime.ReadOnly = true;
-            this.Supprime.Text = "Supprimer";
-            this.Supprime.ToolTipText = "Supprimer";
-            this.Supprime.UseColumnTextForButtonValue = true;
-            // 
             // frmCentres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 659);
+            this.ClientSize = new System.Drawing.Size(580, 605);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
@@ -392,8 +396,6 @@
             this.Controls.Add(this.grpClient);
             this.Name = "frmCentres";
             this.Text = "Centre";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCentres_FormClosing);
-            this.Load += new System.EventHandler(this.frmCentres_Load);
             this.grpClient.ResumeLayout(false);
             this.grpClient.PerformLayout();
             this.grpDetailsCentre.ResumeLayout(false);
@@ -402,9 +404,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEquipements)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsTypeEquipement)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsModele)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquipement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTypeEquipement)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTarif)).EndInit();
             this.ResumeLayout(false);
 

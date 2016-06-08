@@ -40,7 +40,7 @@ namespace DAO
                         {
                             while (reader.Read())
                             {
-                                int numSerie = reader.GetInt32(0);
+                                string numSerie = reader.GetString(0);
                                 string nomModele = reader.GetString(1);
                                 int numModele = reader.GetInt32(2);
                                 decimal tarif = reader.GetDecimal(3);
@@ -75,5 +75,119 @@ namespace DAO
             }//End using connection
 
         }
+
+
+        public int AddEquipement(Equipement equipement)
+        {
+            //  c.AddProduit(p);
+
+            using (DbConnection db = DAOConnection.GetConnexion())
+            {
+                using (DbCommand cde = db.CreateCommand())
+                {
+                    cde.CommandText = "[dbo].[AddEquipement]";
+                    cde.CommandType = CommandType.StoredProcedure;
+
+
+                    // Nom
+                    DbParameter odbP1 = cde.CreateParameter();
+                    odbP1.DbType = System.Data.DbType.String;
+                    odbP1.Direction = System.Data.ParameterDirection.Input;
+                    odbP1.ParameterName = "@numserie";
+                    odbP1.Value = equipement.NumSerie ;
+                    cde.Parameters.Add(odbP1);
+                    // MODELE
+                    DbParameter odbP2 = cde.CreateParameter();
+                    odbP2.DbType = System.Data.DbType.Int32;
+                    odbP2.Direction = System.Data.ParameterDirection.Input;
+                    odbP2.ParameterName = "@idmodele";
+                    odbP2.Value = equipement.Modele.CodeModele ;
+                    cde.Parameters.Add(odbP2);
+
+                    // CENTRE
+                    DbParameter odbP3 = cde.CreateParameter();
+                    odbP3.DbType = System.Data.DbType.Int32;
+                    odbP3.Direction = System.Data.ParameterDirection.Input;
+                    odbP3.ParameterName = "@numcentre";
+                    odbP3.Value = equipement.Centre.NumCentre ;
+                    cde.Parameters.Add(odbP3);
+
+                   
+
+                    try
+                    {
+                        int n = cde.ExecuteNonQuery();
+
+                        if (n != 1)
+                            throw new DAOExceptionClient("L'opération n'a pas été réalisée");
+                        // récup du parametre de sortie
+
+
+
+                        return n;
+
+
+                    }
+                    catch (DbException de)
+                    {
+                        throw new DAOExceptionClient("[DAO] AddEquipement \n" + de.Message, de);
+                    }
+
+                } // fin using command
+            }// fin using connection
+
+        }
+
+      
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="p"></param>
+        public int DelEquipement(int centre)
+        {
+            //  c.AddProduit(p);
+
+            using (DbConnection db = DAOConnection.GetConnexion())
+            {
+                using (DbCommand cde = db.CreateCommand())
+                {
+                    cde.CommandText = "[dbo].[DelEquipement]";
+                    cde.CommandType = CommandType.StoredProcedure;
+
+
+                   
+
+                    // CENTRE
+                    DbParameter odbP3 = cde.CreateParameter();
+                    odbP3.DbType = System.Data.DbType.Int32;
+                    odbP3.Direction = System.Data.ParameterDirection.Input;
+                    odbP3.ParameterName = "@numcentre";
+                    odbP3.Value = centre;
+                    cde.Parameters.Add(odbP3);
+
+                    try
+                    {
+                        int n = cde.ExecuteNonQuery();
+
+                        if (n != 1)
+                            throw new DAOExceptionClient("L'opération n'a pas été réalisée");
+                        // récup du parametre de sortie
+
+
+
+                        return n;
+
+
+                    }
+                    catch (DbException de)
+                    {
+                        throw new DAOExceptionClient("[DAO] DELEquipement \n" + de.Message, de);
+                    }
+
+                } // fin using command
+            }// fin using connection
+        }
+
     }
 }

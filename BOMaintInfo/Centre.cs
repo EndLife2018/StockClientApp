@@ -14,7 +14,7 @@ namespace BO
         private List<Equipement> equipements ;
         private Secteur secteur ;
         private string nomCentre;
-
+        private Client client;
 
 
 
@@ -108,6 +108,19 @@ namespace BO
             }
         }
 
+        public Client Client
+        {
+            get
+            {
+                return client;
+            }
+
+            set
+            {
+                client = value;
+            }
+        }
+
         public Centre(int numCentre,string nomCentre, string telCentre, string adresseCentre, List<Equipement> lequipements, Secteur secteur)
         {
             this.nomCentre = nomCentre;
@@ -121,6 +134,17 @@ namespace BO
         public Centre()
         {
 
+        }
+
+        public Centre(int numCentre, string telCentre, string adresseCentre, List<Equipement> equipements, Secteur secteur, string nomCentre, Client client)
+        {
+            this.numCentre = numCentre;
+            this.telCentre = telCentre;
+            this.adresseCentre = adresseCentre;
+            this.equipements = equipements;
+            this.secteur = secteur;
+            this.nomCentre = nomCentre;
+            this.client = client;
         }
 
         public override bool Equals(object obj)

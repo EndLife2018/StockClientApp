@@ -43,13 +43,13 @@ namespace BLL
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
-        public void AddCLient(Client c)
+        public int AddCLient(Client c)
         {
             cdao = new DAOClient();
 
             try
             {
-                cdao.AddClient(c);
+                return  cdao.AddClient(c);
 
             }
             catch (Exception ex)
@@ -58,6 +58,24 @@ namespace BLL
             }
 
         }
+
+        public int UpdateCLient(Client c)
+        {
+            cdao = new DAOClient();
+
+            try
+            {
+                return cdao.UpdateClient(c);
+
+            }
+            catch (Exception ex)
+            {
+                throw new BLLExceptionsClient("[BLL] UpdateClient : \n" + ex.Message, ex);
+            }
+
+        }
+
+
 
     }
 

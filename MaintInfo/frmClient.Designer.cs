@@ -34,9 +34,6 @@
             this.dgvCentre = new System.Windows.Forms.DataGridView();
             this.bsCentre = new System.Windows.Forms.BindingSource(this.components);
             this.btnAjouterCentre = new System.Windows.Forms.Button();
-            this.grpRechercher = new System.Windows.Forms.GroupBox();
-            this.txtClient = new System.Windows.Forms.TextBox();
-            this.lblClientNom = new System.Windows.Forms.Label();
             this.grpAjouter = new System.Windows.Forms.GroupBox();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,13 +52,12 @@
             this.grpCentres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCentre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCentre)).BeginInit();
-            this.grpRechercher.SuspendLayout();
             this.grpAjouter.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnModifier
             // 
-            this.btnModifier.Location = new System.Drawing.Point(525, 20);
+            this.btnModifier.Location = new System.Drawing.Point(399, 61);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(132, 31);
             this.btnModifier.TabIndex = 0;
@@ -73,9 +69,9 @@
             // 
             this.grpCentres.Controls.Add(this.dgvCentre);
             this.grpCentres.Controls.Add(this.btnAjouterCentre);
-            this.grpCentres.Location = new System.Drawing.Point(12, 217);
+            this.grpCentres.Location = new System.Drawing.Point(12, 124);
             this.grpCentres.Name = "grpCentres";
-            this.grpCentres.Size = new System.Drawing.Size(680, 235);
+            this.grpCentres.Size = new System.Drawing.Size(575, 235);
             this.grpCentres.TabIndex = 5;
             this.grpCentres.TabStop = false;
             this.grpCentres.Text = "Liste  des centres";
@@ -96,7 +92,7 @@
             this.dgvCentre.Location = new System.Drawing.Point(6, 31);
             this.dgvCentre.Name = "dgvCentre";
             this.dgvCentre.ReadOnly = true;
-            this.dgvCentre.Size = new System.Drawing.Size(661, 150);
+            this.dgvCentre.Size = new System.Drawing.Size(540, 150);
             this.dgvCentre.TabIndex = 2;
             this.dgvCentre.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCentre_CellClick);
             this.dgvCentre.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCentre_CellContentClick);
@@ -107,7 +103,7 @@
             // 
             // btnAjouterCentre
             // 
-            this.btnAjouterCentre.Location = new System.Drawing.Point(525, 196);
+            this.btnAjouterCentre.Location = new System.Drawing.Point(414, 197);
             this.btnAjouterCentre.Name = "btnAjouterCentre";
             this.btnAjouterCentre.Size = new System.Drawing.Size(132, 23);
             this.btnAjouterCentre.TabIndex = 1;
@@ -115,46 +111,18 @@
             this.btnAjouterCentre.UseVisualStyleBackColor = true;
             this.btnAjouterCentre.Click += new System.EventHandler(this.btnAjouterCentre_Click);
             // 
-            // grpRechercher
-            // 
-            this.grpRechercher.Controls.Add(this.btnModifier);
-            this.grpRechercher.Controls.Add(this.txtClient);
-            this.grpRechercher.Controls.Add(this.lblClientNom);
-            this.grpRechercher.Location = new System.Drawing.Point(12, 12);
-            this.grpRechercher.Name = "grpRechercher";
-            this.grpRechercher.Size = new System.Drawing.Size(680, 72);
-            this.grpRechercher.TabIndex = 4;
-            this.grpRechercher.TabStop = false;
-            this.grpRechercher.Text = "Client";
-            // 
-            // txtClient
-            // 
-            this.txtClient.Enabled = false;
-            this.txtClient.Location = new System.Drawing.Point(138, 20);
-            this.txtClient.Name = "txtClient";
-            this.txtClient.Size = new System.Drawing.Size(100, 20);
-            this.txtClient.TabIndex = 6;
-            // 
-            // lblClientNom
-            // 
-            this.lblClientNom.AutoSize = true;
-            this.lblClientNom.Location = new System.Drawing.Point(63, 28);
-            this.lblClientNom.Name = "lblClientNom";
-            this.lblClientNom.Size = new System.Drawing.Size(42, 13);
-            this.lblClientNom.TabIndex = 0;
-            this.lblClientNom.Text = "Client  :";
-            // 
             // grpAjouter
             // 
+            this.grpAjouter.Controls.Add(this.btnModifier);
             this.grpAjouter.Controls.Add(this.txtTel);
             this.grpAjouter.Controls.Add(this.label1);
             this.grpAjouter.Controls.Add(this.txtAdresse);
             this.grpAjouter.Controls.Add(this.label3);
             this.grpAjouter.Controls.Add(this.txtNom);
             this.grpAjouter.Controls.Add(this.label2);
-            this.grpAjouter.Location = new System.Drawing.Point(12, 105);
+            this.grpAjouter.Location = new System.Drawing.Point(12, 12);
             this.grpAjouter.Name = "grpAjouter";
-            this.grpAjouter.Size = new System.Drawing.Size(680, 106);
+            this.grpAjouter.Size = new System.Drawing.Size(546, 106);
             this.grpAjouter.TabIndex = 6;
             this.grpAjouter.TabStop = false;
             this.grpAjouter.Text = "Ajouter/ Modifier / Consulter";
@@ -162,7 +130,8 @@
             // txtTel
             // 
             this.txtTel.Enabled = false;
-            this.txtTel.Location = new System.Drawing.Point(385, 29);
+            this.txtTel.Location = new System.Drawing.Point(367, 26);
+            this.txtTel.MaxLength = 10;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(164, 20);
             this.txtTel.TabIndex = 9;
@@ -180,6 +149,7 @@
             // 
             this.txtAdresse.Enabled = false;
             this.txtAdresse.Location = new System.Drawing.Point(99, 58);
+            this.txtAdresse.MaxLength = 50;
             this.txtAdresse.Name = "txtAdresse";
             this.txtAdresse.Size = new System.Drawing.Size(164, 20);
             this.txtAdresse.TabIndex = 4;
@@ -197,6 +167,7 @@
             // 
             this.txtNom.Enabled = false;
             this.txtNom.Location = new System.Drawing.Point(99, 26);
+            this.txtNom.MaxLength = 30;
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(164, 20);
             this.txtNom.TabIndex = 1;
@@ -212,7 +183,7 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(88, 485);
+            this.btnAnnuler.Location = new System.Drawing.Point(31, 382);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(132, 35);
             this.btnAnnuler.TabIndex = 10;
@@ -223,7 +194,7 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(471, 485);
+            this.btnValider.Location = new System.Drawing.Point(426, 382);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(132, 35);
             this.btnValider.TabIndex = 11;
@@ -234,7 +205,7 @@
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(281, 485);
+            this.btnRetour.Location = new System.Drawing.Point(214, 382);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(132, 35);
             this.btnRetour.TabIndex = 12;
@@ -278,26 +249,26 @@
             this.Detail.HeaderText = "Détails";
             this.Detail.Name = "Detail";
             this.Detail.ReadOnly = true;
+            this.Detail.Text = "Détails";
+            this.Detail.UseColumnTextForButtonValue = true;
             // 
             // frmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 545);
+            this.ClientSize = new System.Drawing.Size(597, 481);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.grpAjouter);
             this.Controls.Add(this.grpCentres);
-            this.Controls.Add(this.grpRechercher);
             this.Name = "frmClient";
             this.Text = "Le Client";
             this.Load += new System.EventHandler(this.frmClient_Load);
+            this.Enter += new System.EventHandler(this.frmClient_Enter);
             this.grpCentres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCentre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCentre)).EndInit();
-            this.grpRechercher.ResumeLayout(false);
-            this.grpRechercher.PerformLayout();
             this.grpAjouter.ResumeLayout(false);
             this.grpAjouter.PerformLayout();
             this.ResumeLayout(false);
@@ -309,9 +280,6 @@
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.GroupBox grpCentres;
         private System.Windows.Forms.Button btnAjouterCentre;
-        private System.Windows.Forms.GroupBox grpRechercher;
-        private System.Windows.Forms.TextBox txtClient;
-        private System.Windows.Forms.Label lblClientNom;
         private System.Windows.Forms.DataGridView dgvCentre;
         private System.Windows.Forms.BindingSource bsCentre;
         private System.Windows.Forms.GroupBox grpAjouter;

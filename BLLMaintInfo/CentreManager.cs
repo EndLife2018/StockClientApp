@@ -28,5 +28,40 @@ namespace BLL
             }
 
         }
+
+        public int AddCentre(Centre c)
+        {
+            DAOCentre cdao = new DAOCentre();
+
+            try
+            {
+                return cdao.AddCentre(c);
+
+            }
+            catch (Exception ex)
+            {
+                throw new BLLExceptionsClient("[BLL] AddCentre : \n" + ex.Message, ex);
+            }
+
+        }
+
+        public int UpdateCentre(Centre c)
+        {
+            DAOCentre cdao = new DAOCentre();
+
+            try
+            {
+                return cdao.UpdateCentre(c);
+
+            }
+            catch (Exception ex)
+            {
+                throw new BLLExceptionsClient("[BLL] UpdateCentre : \n" + ex.Message, ex);
+            }
+
+        }
+
+       
+
     }
 }

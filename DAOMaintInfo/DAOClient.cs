@@ -20,7 +20,7 @@ namespace DAO
         /// 
         /// </summary>
         /// <param name="p"></param>
-        public void AddClient( Client c)
+        public int AddClient( Client c)
         {
             //  c.AddProduit(p);
 
@@ -32,14 +32,14 @@ namespace DAO
                     cde.CommandType = CommandType.StoredProcedure;
 
 
-                    // CPU
+                    // Nom
                     DbParameter odbP1 = cde.CreateParameter();
                     odbP1.DbType = System.Data.DbType.String;
                     odbP1.Direction = System.Data.ParameterDirection.Input;
                     odbP1.ParameterName = "@nom";
                     odbP1.Value = c.NomClient;
                     cde.Parameters.Add(odbP1);
-                    // Libelle
+                    // Adresse
                     DbParameter odbP2 = cde.CreateParameter();
                     odbP2.DbType = System.Data.DbType.String;
                     odbP2.Direction = System.Data.ParameterDirection.Input;
@@ -47,7 +47,7 @@ namespace DAO
                     odbP2.Value = c.AdresseClient;
                     cde.Parameters.Add(odbP2);
 
-                    // Prix
+                    // telephone
                     DbParameter odbP3 = cde.CreateParameter();
                     odbP3.DbType = System.Data.DbType.String;
                     odbP3.Direction = System.Data.ParameterDirection.Input;
@@ -55,13 +55,25 @@ namespace DAO
                     odbP3.Value = c.TelephoneClient;
                     cde.Parameters.Add(odbP3);
 
-
+                    // idClient
+                    DbParameter odbP4 = cde.CreateParameter();
+                    odbP4.DbType = System.Data.DbType.Int32;
+                    odbP4.Direction = System.Data.ParameterDirection.Output;
+                    odbP4.ParameterName = "@idClient";
+                    
+                    cde.Parameters.Add(odbP4);
                     try
                     {
                         int n = cde.ExecuteNonQuery();
-
-                        // Pour ne pas obliger chaque proc sto Insert à retourner un identifiant int
-                        // on pourrait retourner la valeur du dernier parametre sous forme d'objet
+                      
+                        if (n != 1)
+                            throw new DAOExceptionClient("L'opération n'a pas été réalisée");
+                        // récup du parametre de sortie
+                       
+                     
+                       
+                        return (int)odbP4.Value;
+                     
 
                     }
                     catch (DbException de)
@@ -75,202 +87,85 @@ namespace DAO
         }
 
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <returns></returns>
-        //public List<Produit> GetCatalogue()
-        //{
-        //    // return c.GetCatalogue;
-
-        //    using (DbConnection db = ConnectionDAO.GetConnexion())
-        //    {
-        //        using (DbCommand cde = db.CreateCommand())
-        //        {
-        //            cde.CommandText = "[dbo].[GetAllProduits]";
-        //            cde.CommandType = CommandType.StoredProcedure;
-
-
-        //            List<Produit> lstProduits = new List<Produit>();
-        //            try
-        //            {
-        //                using (DbDataReader reader = cde.ExecuteReader())
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        int cpu = reader.GetInt32(0);
-        //                        string libelle = reader.GetString(1);
-        //                        double prix = (double)reader.GetDecimal(2);
-        //                        Produit prod = new Produit(cpu, libelle, prix);
-
-        //                        lstProduits.Add(prod);
-        //                    }
-
-        //                    reader.Close();
-        //                }
-
-        //            }
-        //            catch (DbException se)
-        //            {
-        //                throw new DAOCatalogue("[DAO] GetCatalogue " + se.Message, se);
-        //            }
-
-        //            return lstProduits;
-
-        //        }//End using command
-        //    }//End using connection
-
-
-
-
-        //}
 
 
         ///// <summary>
         ///// 
         ///// </summary>
         ///// <param name="p"></param>
-        //public void DelProduit(Produit p)
-        //{
-        //    // création connection
-        //    using (DbConnection db = ConnectionDAO.GetConnexion())
-        //    {
-        //        using (DbCommand cde = db.CreateCommand())
-        //        {
-        //            try
-        //            {
-        //                cde.CommandText = "[dbo].[DelProduit]";
-        //                cde.CommandType = CommandType.StoredProcedure;
+        public int UpdateClient(Client c)
+        {
+            //  c.AddProduit(p);
 
-        //                // affectation parametres à la commande
+            using (DbConnection db = DAOConnection.GetConnexion())
+            {
+                using (DbCommand cde = db.CreateCommand())
+                {
+                    cde.CommandText = "[dbo].[UpdateClient]";
+                    cde.CommandType = CommandType.StoredProcedure;
 
 
-        //                int n = cde.ExecuteNonQuery();
-        //                if (n != 1)
-        //                    throw new DAOCatalogue("L'opération de suppression n'a pas été réalisée");
-        //            }
-        //            catch (DbException se)
-        //            {
-        //                throw new DAOCatalogue("[DAO] __Suppression__ \nUne erreur s'est produite sur la base :\n" + se.Message, se);
-        //            }
-        //        }
-        //    }
+                    // Nom
+                    DbParameter odbP1 = cde.CreateParameter();
+                    odbP1.DbType = System.Data.DbType.String;
+                    odbP1.Direction = System.Data.ParameterDirection.Input;
+                    odbP1.ParameterName = "@nom";
+                    odbP1.Value = c.NomClient;
+                    cde.Parameters.Add(odbP1);
+                    // Adresse
+                    DbParameter odbP2 = cde.CreateParameter();
+                    odbP2.DbType = System.Data.DbType.String;
+                    odbP2.Direction = System.Data.ParameterDirection.Input;
+                    odbP2.ParameterName = "@adresse";
+                    odbP2.Value = c.AdresseClient;
+                    cde.Parameters.Add(odbP2);
 
-        //}
+                    // telephone
+                    DbParameter odbP3 = cde.CreateParameter();
+                    odbP3.DbType = System.Data.DbType.String;
+                    odbP3.Direction = System.Data.ParameterDirection.Input;
+                    odbP3.ParameterName = "@tel";
+                    odbP3.Value = c.TelephoneClient;
+                    cde.Parameters.Add(odbP3);
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="p"></param>
-        //public void ModifierProduit(Produit p)
-        //{
+                    // idClient
+                    DbParameter odbP4 = cde.CreateParameter();
+                    odbP4.DbType = System.Data.DbType.Int32;
+                    odbP4.Direction = System.Data.ParameterDirection.Input;
+                    odbP4.Value = c.NumClient;
+                    odbP4.ParameterName = "@idClient";
 
-        //    // création connection
-        //    using (DbConnection db = ConnectionDAO.GetConnexion())
-        //    {
-        //        using (DbCommand cde = db.CreateCommand())
-        //        {
-        //            try
-        //            {
-        //                cde.CommandText = "[dbo].[UpdateProduit]";
-        //                cde.CommandType = CommandType.StoredProcedure;
-        //                // CPU
-        //                DbParameter odbP1 = cde.CreateParameter();
-        //                odbP1.DbType = System.Data.DbType.Int32;
-        //                odbP1.Direction = System.Data.ParameterDirection.Input;
-        //                odbP1.ParameterName = "@cpu";
-        //                odbP1.Value = p.Cpu;
-        //                cde.Parameters.Add(odbP1);
-        //                // Libelle
-        //                DbParameter odbP2 = cde.CreateParameter();
-        //                odbP2.DbType = System.Data.DbType.String;
-        //                odbP2.Direction = System.Data.ParameterDirection.Input;
-        //                odbP2.ParameterName = "@libelle";
-        //                odbP2.Value = p.Libelle;
-        //                cde.Parameters.Add(odbP2);
+                    cde.Parameters.Add(odbP4);
+                    try
+                    {
+                        int n = cde.ExecuteNonQuery();
 
-        //                // Prix
-        //                DbParameter odbP3 = cde.CreateParameter();
-        //                odbP3.DbType = System.Data.DbType.Double;
-        //                odbP3.Direction = System.Data.ParameterDirection.Input;
-        //                odbP3.ParameterName = "@prix";
-        //                odbP3.Value = p.Prix;
-        //                cde.Parameters.Add(odbP3);
+                        if (n != 1)
+                            throw new DAOExceptionClient("L'opération n'a pas été réalisée");
+                        // récup du parametre de sortie
 
 
-        //                int n = cde.ExecuteNonQuery();
-        //                if (n != 1)
-        //                    throw new DAOCatalogue("L'opération de mise à jour n'a pas été réalisée\n");
-        //            }
-        //            catch (DbException se)
-        //            {
-        //                throw new DAOCatalogue("[DAO] Modifier Produit : \n" + se.Message, se);
-        //            }
-        //        }
-        //    }
-        //}
+
+                        return (int)odbP4.Value;
 
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="c"></param>
-        ///// <returns></returns>
-        //public List<Produit> GetProduitsByCpu(int c)
-        //{
-        //    // return c.GetCatalogue;
+                    }
+                    catch (DbException de)
+                    {
+                        throw new DAOExceptionClient("[DAO] AddClient \n" + de.Message, de);
+                    }
 
-        //    using (DbConnection db = ConnectionDAO.GetConnexion())
-        //    {
-        //        using (DbCommand cde = db.CreateCommand())
-        //        {
-        //            cde.CommandText = "GetProduitsByCpu";
-        //            cde.CommandType = CommandType.StoredProcedure;
+                } // fin using command
+            }// fin using connection
+        }
 
-        //            DbParameter odbP1 = cde.CreateParameter();
-        //            odbP1.DbType = System.Data.DbType.Int32;
-        //            odbP1.Direction = System.Data.ParameterDirection.Input;
-        //            odbP1.ParameterName = "@cpu";
-        //            odbP1.Value = c;
-        //            cde.Parameters.Add(odbP1);
+      
 
-
-        //            List<Produit> lstProduits = new List<Produit>();
-        //            try
-        //            {
-        //                using (DbDataReader reader = cde.ExecuteReader())
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        int cpu = reader.GetInt32(0);
-        //                        string libelle = reader.GetString(1);
-        //                        double prix = (double)reader.GetDecimal(2);
-        //                        Produit prod = new Produit(cpu, libelle, prix);
-
-        //                        lstProduits.Add(prod);
-        //                    }
-
-        //                    reader.Close();
-        //                }
-
-        //            }
-        //            catch (DbException se)
-        //            {
-        //                throw new DAOCatalogue("[DAO] GetProductsByCpu " + se.Message, se);
-        //            }
-
-        //            return lstProduits;
-
-        //        }//End using command
-        //    }//End using connection
-
-        //}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="n"></param>
+            /// <returns></returns>
         public List<Client> GetClientsByName(string n)
         {
             // return c.GetCatalogue;

@@ -15,16 +15,23 @@ namespace MaintInfo
 {
     public partial class frmCentres : Form
     {
+        
+        private GestionClients ctrlClient = new GestionClients();
+
+        private List<Equipement> equipements = new List<Equipement>(); // sauvegarde des equipements en cas de mauvaise manipulations
         private Centre centre;
-        private GestionClients ctrlClient;
-        List<Equipement> equipements;
+        private Client client;
+        private enum Mode { LECTURE, AJOUT, MODIFICATION };
+        private Mode mode;
 
         //=================================================================================================================
         // GEstion des Methodes 
 
-        private void ValideChamps( bool b )
+        private void Affichage( Mode m )
         {
-            txtClient.Enabled = b;
+    
+            bool b = (m == Mode.LECTURE) ? false : true ;
+
             txtAdresse.Enabled = b;
             txtNomCentre.Enabled = b;
             txtTel.Enabled = b;
@@ -50,118 +57,115 @@ namespace MaintInfo
 
         }
 
-        private void Mode( int choix )
+        private void RemplirBindingSource()
         {
-            switch ( choix  ) 
-            {
-                case 0: // mode lecture
-                    ValideChamps(false);
-
-                    break;
-                case 1: // mode modification
-                    ValideChamps(true);
-                 
-                    break;
-
-                case 2:// mode enregistrer
-                    ValideChamps(true);
-
-                    break;
-            }
-            
-
-        }
-
-        //==========================================================================================================
-        // GEstion chargement feuille
-
-        public frmCentres()
-        {
-            InitializeComponent();
-            ValideChamps(true);
-            // Mode Ajout 
-            bsSecteur.DataSource = new SecteurManager().GetAllSecteur();
-            bsModele.DataSource = new ModeleManager().GetAllModele();
-            bsTypeEquipement.DataSource = new TypeManager().GetAllTypeEquipement();
-
-        }
-
-        public frmCentres(Centre c)
-        {
-            InitializeComponent();
-            ValideChamps(false);
-
+            // Mode Ajout et modification
             try
             {
-
-                bsSecteur.DataSource = new SecteurManager().GetAllSecteur();
-                bsModele.DataSource = new ModeleManager().GetAllModele();
-                bsTypeEquipement.DataSource = new TypeManager().GetAllTypeEquipement();
-                
-                // modele
-
-                // Tarif
-
+                bsSecteur.DataSource = ctrlClient.ListSecteur();
+                bsModele.DataSource = ctrlClient.ListModele();
+                bsTypeEquipement.DataSource = ctrlClient.ListTypeEquipement();
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 this.Close();
             }
 
-            
 
+        }
 
-
-            centre = c;
-
+        private void RemplirChamps()
+        {
+            // Charger les equipements du centre dans la data grid view attacher a un binding source
             try
             {
-                equipements = new List<Equipement>();
-                equipements = new EquipementManager().GetEquipements(c.NumCentre);
-                //try
-                bsEquipement.DataSource = equipements;
-                //catch
+                equipements = ctrlClient.ListEquipementsDuCentre(centre.NumCentre);
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                this.Close();
             }
-               
-            // remplissage des binding sources pour complete l'affichage du data grid          
-            List<Modele> m = new List<Modele>();
-            List<Tarif> t = new List<Tarif>();
-          
+
+
+            bsEquipement.Clear();
             foreach (Equipement e in equipements)
             {
-               // m.Add(e.Modele);
-                t.Add(e.Modele.Tarif);
-            
+                bsEquipement.Add(e);
+                bsModele.Add(e.Modele);
+                bsTarif.Add(e.Modele.Tarif);
             }
-            
-           // bsModele.DataSource = m; 
-            bsTarif.DataSource = t;
-            
+
 
             // Remplissage manuel des champs 
-            txtClient.Text = c.NomCentre;
-            txtNomCentre.Text = c.NomCentre;
-            txtTel.Text = c.TelCentre;
-            txtAdresse.Text = c.AdresseCentre;
-            cbSecteur.SelectedItem = c.Secteur;
-            
-            
+            txtNomCentre.Text = centre.NomCentre;
+            txtTel.Text = centre.TelCentre;
+            txtAdresse.Text = centre.AdresseCentre;
+            cbSecteur.SelectedItem = centre.Secteur;
+            txtClient.Text = client.NomClient;
+
+
         }
 
-        private void frmCentres_Load(object sender, EventArgs e)
+        private bool ValideCentre()
         {
-          
+            bool test = false;
+            if (txtNomCentre.Text == string.Empty)
+                MessageBox.Show("Vous Devez absolument mettre un Nom pour le centre");
+            else if (cbSecteur.SelectedIndex == -1)
+                MessageBox.Show("Vous Devez absolument Choisir secteur");
+            else if (txtAdresse.Text == string.Empty)
+                MessageBox.Show("Vous Devez absolument taper une adresse");
+            else if (txtTel.Text == string.Empty)
+                MessageBox.Show("Vous Devez absolument taper un numero telephone");
+            else
+                test = true;
+
+            return test;
         }
 
-        private void frmCentres_FormClosing(object sender, FormClosingEventArgs e)
+        private bool ValideEquipement()
         {
-            //e.Cancel = false;
+            bool test = false;
+            if (txtNumSerie.Text == String.Empty)
+                MessageBox.Show("Vous Devez absolument mettre un numéro de série");
+            else if (cbType.SelectedIndex == -1)
+                MessageBox.Show("Vous Devez absolument Choisir un type");
+            else if (cbModele.SelectedIndex == -1)
+                MessageBox.Show("Vous Devez absolument Choisir un type");
+            else
+                test = true;
+
+            return test;
+        }
+
+        //==========================================================================================================
+        // GEstion chargement feuille
+
+        public frmCentres(Client clt, Centre ctre)
+        {
+            InitializeComponent();
+
+            RemplirBindingSource();
+
+            client = clt; centre = ctre;
+            if (centre != null) mode = Mode.LECTURE;
+            else mode = Mode.AJOUT;
+            if (client == null)
+            {
+                MessageBox.Show("Erreur ");
+                this.Close();
+            }
+
+            Affichage(mode);
+
+            if (mode == Mode.LECTURE)
+                RemplirChamps();
+
+
+            txtClient.Text = client.NomClient;
         }
 
 
@@ -171,51 +175,136 @@ namespace MaintInfo
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            ValideChamps(true);
+            mode = Mode.MODIFICATION;
+            Affichage(mode);
+            cbSecteur.SelectedItem = centre.Secteur;
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            ValideChamps(false);
 
+
+            if (mode == Mode.MODIFICATION)
+            {
+                txtNomCentre.Text = centre.NomCentre;
+                txtTel.Text = centre.TelCentre;
+                txtAdresse.Text = centre.AdresseCentre;
+
+                txtClient.Text = client.NomClient;
+                
+
+                bsEquipement.Clear();
+
+                //Remettre le binding source a l'état d'origine
+                foreach (Equipement eq in equipements)
+                    bsEquipement.Add(eq);
+
+
+
+                mode = Mode.LECTURE;
+                Affichage(mode);
+                cbSecteur.SelectedItem = centre.Secteur;
+            }
+            else
+                this.Close();
+
+         
+            
         }
-
-
-
 
         private void btnValider_Click(object sender, EventArgs e)
         {
            // if (btnModifier.Visible == false )
+           if ( mode == Mode.AJOUT)
+            {
+                //Verification des champs .
+                if ( ValideCentre() )
+                {
+                    try
+                    {
+                        Centre tmp = new Centre(0,  txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text,client);
+                        int i = ctrlClient.AjouterCentre(tmp);
 
-            ValideChamps(false);
+                        centre = new Centre();
+                        centre = tmp;
+                        centre.NumCentre = i;
 
-            //Verifiaction des champs 
-            //NomCentre
-            //Tel
-            //Adresse
-            //Secteur
+                        
+                        //Ajout liste equipements 
+                        foreach ( Equipement equi in bsEquipement )
+                        {
+                            equi.Centre = new Centre { NumCentre = i } ;
+                            int f = ctrlClient.AjouterEquipement(equi);
+                        }
 
-            //creation instance Centre 
-            //centre= new Centre( Nom, numero client, ((Secteur) (cdsecteur.selecteditem)).idsecteur ,tel,adresse )
+                        mode = Mode.LECTURE;
+                        Affichage(mode);
 
-            //ADDCentre en DAO 
-            //AddCentre( centre ) ;
-            //Recupère le numèreo si tous ok
-            //creer une instance liste equipement
-            // foreach ( ligne in dgv )
-                // equipements.Add( ligne, numserie, ... , code retour id Add cleint )
-                // DAO
-                //AddEquipements
-            
+                    }catch( Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                   
+
+                }
+            }
+           else
+            {
+                if (ValideCentre())
+                {
+                    try
+                    {
+
+                        Centre tmp = new Centre(centre.NumCentre, txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text, client);
+                        int i = ctrlClient.UpdateCentre(tmp);
+
+                        centre = tmp;
+                        centre.NumCentre = i;
+
+
+                        ctrlClient.DelEquipement(i);
+                        //Ajout liste equipements 
+                        foreach (Equipement equi in bsEquipement)
+                        {
+                            equi.Centre = new Centre { NumCentre = i };
+                            int f = ctrlClient.AjouterEquipement(equi);
+                        }
+
+                        mode = Mode.LECTURE;
+                        Affichage(mode);
+                    }
+                    catch( Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                   
+
+                    // mise a jour liste equipements 
+
+                }
+            }
+
 
 
 
 
         }
 
+        /// <summary>
+        /// Ajoute un equipement dans la liste d'equipement du centre 
+        /// Ajoute dans l'instance equipements 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjouterEquipement_Click(object sender, EventArgs e)
         {
-            bsEquipement.Add(new Equipement(new Modele( ((Modele)cbModele.SelectedItem).CodeModele , ((Modele)cbModele.SelectedItem).LibelleModele ) , int.Parse(txtNumSerie.Text)  ) ) ;
+
+            if ( ValideEquipement() )
+                bsEquipement.Add(new Equipement(new Modele( ((Modele)cbModele.SelectedItem).CodeModele , ((Modele)cbModele.SelectedItem).LibelleModele ) , txtNumSerie.Text  ) ) ;
+
+            cbType.SelectedIndex = -1;
+            cbModele.SelectedIndex = -1;
+            txtNumSerie.Text = string.Empty;
 
         }
 
@@ -224,13 +313,15 @@ namespace MaintInfo
             this.Close();
         }
 
+        //============================================================================================================
+        // Gestion data grid view
+
         private void dgvEquipements_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvEquipements.CurrentCell != null && dgvEquipements.CurrentCell.RowIndex >= 0)
             {
                 if (dgvEquipements.CurrentCell.ColumnIndex == 2)
                 {
-                    //MessageBox.Show("Supprimer cette ligne \n" + dgvEquipements.CurrentRow   );
                     bsEquipement.RemoveCurrent();
                 }
 
