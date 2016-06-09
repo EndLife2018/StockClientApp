@@ -321,6 +321,7 @@ namespace MaintInfo
             {
                 if (dgvEquipements.CurrentCell.ColumnIndex == 2)
                 {
+                    
                     bsEquipement.RemoveCurrent();
                 }
 

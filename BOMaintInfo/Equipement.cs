@@ -14,6 +14,7 @@ namespace BO
         private Modele modele;
         private string numSerie;
         private Centre centre;
+        
 
         //======================================================================================================================================
         //Accesseurs
