@@ -15,6 +15,10 @@ namespace DAO
 {
     public class DAOType
     {
+        /// <summary>
+        /// Recupère la liste de tous les  Type d'equiepements
+        /// </summary>
+        /// <returns></returns>
         public List<TypeEquipement> GetAllTypeEquipement()
         {
 

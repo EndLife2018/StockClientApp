@@ -13,9 +13,17 @@ namespace BLL
 {
     public class CentreManager
     {
+
+        DAOCentre cdao;
+
+        /// <summary>
+        /// Obtenir le liste des centre en fonction de l'id client
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
         public List<Centre> GetCentres(int search)
         {
-            DAOCentre cdao = new DAOCentre();
+            cdao = new DAOCentre();
 
             try
             {
@@ -29,9 +37,14 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// Ajouter un centre 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public int AddCentre(Centre c)
         {
-            DAOCentre cdao = new DAOCentre();
+            cdao = new DAOCentre();
 
             try
             {
@@ -45,9 +58,14 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// Mise à jour du centre
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public int UpdateCentre(Centre c)
         {
-            DAOCentre cdao = new DAOCentre();
+            cdao = new DAOCentre();
 
             try
             {

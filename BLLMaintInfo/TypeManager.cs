@@ -15,11 +15,16 @@ namespace BLL
 {
     public class TypeManager
     {
+        DAOType cdao;
+
+        /// <summary>
+        /// Recupère la liste de tous les type d'équipements
+        /// </summary>
+        /// <returns></returns>
         public List<TypeEquipement> GetAllTypeEquipement()
         {
-            DAOType cdao = new DAOType();
-
-
+            cdao = new DAOType();
+            
             try
             {
                 return cdao.GetAllTypeEquipement();

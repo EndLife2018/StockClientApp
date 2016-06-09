@@ -14,26 +14,15 @@ namespace BLL
 {
     public class ModeleManager
     {
-        //public List<Modele> GetAllModeleByType(int type )
-        //{
-        //    DAOModele cdao = new DAOModele();
+        DAOModele cdao;
 
-
-        //    try
-        //    {
-        //        return cdao.GetAllModeleByType(type);
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new BLLExceptionModele("[BLL] GetAllModeleByType : \n" + ex.Message, ex);
-        //    }
-
-        //}
-
+        /// <summary>
+        /// Recupere la liste de tous les modèles
+        /// </summary>
+        /// <returns></returns>
         public List<Modele> GetAllModele( )
         {
-            DAOModele cdao = new DAOModele();
+            cdao = new DAOModele();
 
 
             try

@@ -18,7 +18,7 @@ namespace BLL
 
 
         /// <summary>
-        /// 
+        ///  Recherche la liste des client dont le nom contient les lettres passé en paramètre
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace BLL
         }
 
         /// <summary>
-        /// 
+        ///  Ajouter un client
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
@@ -59,6 +59,11 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// Mise à jour du client
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public int UpdateCLient(Client c)
         {
             cdao = new DAOClient();

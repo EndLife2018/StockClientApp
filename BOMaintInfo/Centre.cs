@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace BO
 {
+
     public class Centre
     {
+        //======================================================================================================================================
+        //Attribut
+
         private int numCentre;
         private string telCentre;
         private string adresseCentre;
@@ -16,7 +20,8 @@ namespace BO
         private string nomCentre;
         private Client client;
 
-
+        //======================================================================================================================================
+        //Accesseurs
 
         public int NumCentre
         {
@@ -121,6 +126,10 @@ namespace BO
             }
         }
 
+
+        //======================================================================================================================================
+        // Constructeurs
+
         public Centre(int numCentre,string nomCentre, string telCentre, string adresseCentre, List<Equipement> lequipements, Secteur secteur)
         {
             this.nomCentre = nomCentre;
@@ -146,6 +155,10 @@ namespace BO
             this.nomCentre = nomCentre;
             this.client = client;
         }
+
+
+        //======================================================================================================================================
+        //Méthode surchargé
 
         public override bool Equals(object obj)
         {

@@ -17,10 +17,9 @@ namespace MaintInfo
     public partial class frmClients : Form
     {
 
-        //Declaration du formulaire Client
-        frmClient centre = null;
-        // Déclaraation du controleur
-        GestionClients ctrlClients = null ;
+        
+        frmClient centre = null;//Declaration du formulaire Client
+        GestionClients ctrlClients = null ;// Instance du controleur
 
 
         public frmClients()
@@ -31,8 +30,6 @@ namespace MaintInfo
 
         private void frmClients_Load(object sender, EventArgs e)
         {
-            //
-            //instancer le controleur
             ctrlClients = new GestionClients() ;
         }
 

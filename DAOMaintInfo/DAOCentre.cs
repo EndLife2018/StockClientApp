@@ -17,7 +17,8 @@ namespace DAO
     public class DAOCentre
     {
         /// <summary>
-        /// 
+        /// Execution de la procedure stocké 
+        /// Recupere la liste de tous les centre par centre
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -78,7 +79,11 @@ namespace DAO
 
         }
 
-
+        /// <summary>
+        /// Ajoute un centre dans la table Centre de la base de donnée maintinfo
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public int AddCentre(Centre c)
         {
             //  c.AddProduit(p);
@@ -164,13 +169,13 @@ namespace DAO
 
 
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="p"></param>
+       /// <summary>
+       /// Mise à jour de la table Centre 
+       /// </summary>
+       /// <param name="c"></param>
+       /// <returns></returns>
         public int UpdateCentre(Centre c)
         {
-            //  c.AddProduit(p);
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {

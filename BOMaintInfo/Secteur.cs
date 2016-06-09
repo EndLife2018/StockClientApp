@@ -8,20 +8,14 @@ namespace BO
 {
     public class Secteur
     {
+        //======================================================================================================================================
+        //Attribut
 
         private int codeSecteur;
         private string libelleSecteur;
 
-        public Secteur()
-        {
-
-        }
-
-        public Secteur(int codeSecteur, string libelleSecteur)
-        {
-            this.codeSecteur = codeSecteur;
-            this.libelleSecteur = libelleSecteur;
-        }
+        //======================================================================================================================================
+        //Accesseurs
 
         public int CodeSecteur
         {
@@ -48,6 +42,30 @@ namespace BO
                 libelleSecteur = value;
             }
         }
+
+        //======================================================================================================================================
+        // Constructeurs
+
+
+        public Secteur()
+        {
+
+        }
+
+        public Secteur(int codeSecteur, string libelleSecteur)
+        {
+            this.codeSecteur = codeSecteur;
+            this.libelleSecteur = libelleSecteur;
+        }
+
+
+
+        //======================================================================================================================================
+        //Méthode surchargé
+
+
+
+
 
         public override bool Equals(object obj)
         {

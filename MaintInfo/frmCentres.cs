@@ -16,17 +16,21 @@ namespace MaintInfo
     public partial class frmCentres : Form
     {
         
-        private GestionClients ctrlClient = new GestionClients();
+        private GestionClients ctrlClient = new GestionClients(); // Instance du controleur
 
         private List<Equipement> equipements = new List<Equipement>(); // sauvegarde des equipements en cas de mauvaise manipulations
-        private Centre centre;
-        private Client client;
+        private Centre centre = null ;
+        private Client client = null ;
         private enum Mode { LECTURE, AJOUT, MODIFICATION };
         private Mode mode;
 
         //=================================================================================================================
         // GEstion des Methodes 
 
+        /// <summary>
+        /// Interdit ou autorise la saisie
+        /// </summary>
+        /// <param name="m"></param>
         private void Affichage( Mode m )
         {
     
@@ -109,6 +113,10 @@ namespace MaintInfo
 
         }
 
+        /// <summary>
+        /// Verification de la saisie du centre
+        /// </summary>
+        /// <returns></returns>
         private bool ValideCentre()
         {
             bool test = false;
@@ -125,7 +133,11 @@ namespace MaintInfo
 
             return test;
         }
-
+        
+        /// <summary>
+        /// Verification e la saisie de l'equiepement 
+        /// </summary>
+        /// <returns></returns>
         private bool ValideEquipement()
         {
             bool test = false;
@@ -212,79 +224,64 @@ namespace MaintInfo
             
         }
 
+        public delegate int ADDUpd(Centre c);
+        /// <summary>
+        /// Utilisation d'un delegates car modification ou ajout seul la faonction controleur change
+        /// </summary>
+        /// <param name="fct"></param>
+        private void AjoutModif(ADDUpd fct )
+        {
+
+            try
+            {
+                Centre tmp = new Centre(0, txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text, client);
+                // int i = ctrlClient.AjouterCentre(tmp);
+                int i = fct(tmp);
+
+                if (centre == null) centre = new Centre();
+                centre = tmp;
+                centre.NumCentre = i;
+
+                if (equipements.Count != 0 && mode == Mode.MODIFICATION) ctrlClient.DelEquipement(i);
+
+                if (i != 0 && bsEquipement.Count != 0)
+                {
+                    //Ajout liste equipements 
+                    foreach (Equipement equi in bsEquipement)
+                    {
+                        equi.Centre = new Centre { NumCentre = i };
+                        int f = ctrlClient.AjouterEquipement(equi);
+                    }
+
+                }
+
+                mode = Mode.LECTURE;
+                Affichage(mode);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValider_Click(object sender, EventArgs e)
         {
-           // if (btnModifier.Visible == false )
-           if ( mode == Mode.AJOUT)
-            {
-                //Verification des champs .
-                if ( ValideCentre() )
-                {
-                    try
-                    {
-                        Centre tmp = new Centre(0,  txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text,client);
-                        int i = ctrlClient.AjouterCentre(tmp);
+            if (!ValideCentre()) return;
 
-                        centre = new Centre();
-                        centre = tmp;
-                        centre.NumCentre = i;
+            ADDUpd f;
 
-                        
-                        //Ajout liste equipements 
-                        foreach ( Equipement equi in bsEquipement )
-                        {
-                            equi.Centre = new Centre { NumCentre = i } ;
-                            int f = ctrlClient.AjouterEquipement(equi);
-                        }
+            if ( mode == Mode.AJOUT)
+                f = ctrlClient.AjouterCentre;
+            else
+                f = ctrlClient.UpdateCentre;
 
-                        mode = Mode.LECTURE;
-                        Affichage(mode);
-
-                    }catch( Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                   
-
-                }
-            }
-           else
-            {
-                if (ValideCentre())
-                {
-                    try
-                    {
-
-                        Centre tmp = new Centre(centre.NumCentre, txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text, client);
-                        int i = ctrlClient.UpdateCentre(tmp);
-
-                        centre = tmp;
-                        centre.NumCentre = i;
-
-
-                        ctrlClient.DelEquipement(i);
-                        //Ajout liste equipements 
-                        foreach (Equipement equi in bsEquipement)
-                        {
-                            equi.Centre = new Centre { NumCentre = i };
-                            int f = ctrlClient.AjouterEquipement(equi);
-                        }
-
-                        mode = Mode.LECTURE;
-                        Affichage(mode);
-                    }
-                    catch( Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                   
-
-                    // mise a jour liste equipements 
-
-                }
-            }
-
-
+            AjoutModif(f);
 
 
 

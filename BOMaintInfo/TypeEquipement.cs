@@ -8,14 +8,15 @@ namespace BO
 {
    public  class TypeEquipement
     {
+
+        //======================================================================================================================================
+        //Attribut
+
         private int codeType;
         private string libelleType;
 
-        public TypeEquipement(int codeType, string libelleType)
-        {
-            this.codeType = codeType;
-            this.libelleType = libelleType;
-        }
+        //======================================================================================================================================
+        //Accesseurs
 
         public int CodeType
         {
@@ -43,16 +44,28 @@ namespace BO
             }
         }
 
+        public TypeEquipement Self
+        {
+            get { return this; }
+        }
+
+        //======================================================================================================================================
+        // Constructeurs
 
         public TypeEquipement()
         {
 
         }
 
-        public TypeEquipement Self
+        public TypeEquipement(int codeType, string libelleType)
         {
-            get { return this; }
+            this.codeType = codeType;
+            this.libelleType = libelleType;
         }
+
+        //======================================================================================================================================
+        //Méthode surchargé
+
 
         public override bool Equals(object obj)
         {

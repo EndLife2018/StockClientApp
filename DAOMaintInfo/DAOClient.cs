@@ -17,12 +17,11 @@ namespace DAO
     {
 
         /// <summary>
-        /// 
+        /// Ajoute un client dans la table Client de la base de données Maintinfo
         /// </summary>
         /// <param name="p"></param>
         public int AddClient( Client c)
         {
-            //  c.AddProduit(p);
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {
@@ -87,15 +86,13 @@ namespace DAO
         }
 
 
-
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="p"></param>
+        /// <summary>
+        /// Mise à jour de la table Client 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public int UpdateClient(Client c)
         {
-            //  c.AddProduit(p);
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {
@@ -159,16 +156,16 @@ namespace DAO
             }// fin using connection
         }
 
-      
 
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="n"></param>
-            /// <returns></returns>
+
+        /// <summary>
+        ///  Execution de la procedure stocké 
+        /// Recupere la liste de tous les clients en fonction de lettres
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public List<Client> GetClientsByName(string n)
         {
-            // return c.GetCatalogue;
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {

@@ -8,17 +8,17 @@ namespace BO
 {
     public class Modele
     {
+        //======================================================================================================================================
+        //Attribut
+
         private int codeModele;
         private string libelleModele;
         private Tarif tarif;
         private TypeEquipement te;
 
+        //======================================================================================================================================
+        //Accesseurs
 
-        public Modele(int codeModele, string libelleModele)
-        {
-            this.codeModele = codeModele;
-            this.libelleModele = libelleModele;
-        }
 
         public int CodeModele
         {
@@ -83,6 +83,15 @@ namespace BO
             get { return this; }
         }
 
+        //======================================================================================================================================
+        // Constructeurs
+
+        public Modele(int codeModele, string libelleModele)
+        {
+            this.codeModele = codeModele;
+            this.libelleModele = libelleModele;
+        }
+
         public Modele(int codeModele, string libelleModele, TypeEquipement te)
         {
             this.codeModele = codeModele;
@@ -97,6 +106,11 @@ namespace BO
             this.tarif = tarif;
             this.te = te;
         }
+
+
+        //======================================================================================================================================
+        //Méthode surchargé
+
 
         public override bool Equals(object obj)
         {

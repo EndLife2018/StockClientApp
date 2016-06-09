@@ -14,9 +14,14 @@ namespace DAO
 {
     public  class DAOEquipement
     {
+        /// <summary>
+        /// Execution de la procedure stocké 
+        /// Recupere la liste de tous les equipements par centre
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public List<Equipement> GetEquipementByCentre(int num)
         {
-            // return c.GetCatalogue;
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {
@@ -76,10 +81,13 @@ namespace DAO
 
         }
 
-
+        /// <summary>
+        /// Ajoute dans le table Equipements 
+        /// </summary>
+        /// <param name="equipement"></param>
+        /// <returns></returns>
         public int AddEquipement(Equipement equipement)
         {
-            //  c.AddProduit(p);
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {
@@ -112,7 +120,6 @@ namespace DAO
                     odbP3.Value = equipement.Centre.NumCentre ;
                     cde.Parameters.Add(odbP3);
 
-                   
 
                     try
                     {
@@ -121,8 +128,6 @@ namespace DAO
                         if (n != 1)
                             throw new DAOExceptionClient("L'opération n'a pas été réalisée");
                         // récup du parametre de sortie
-
-
 
                         return n;
 
@@ -140,13 +145,13 @@ namespace DAO
 
       
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="p"></param>
+        /// <summary>
+        /// Efface de la table Equipement tous les equipements par centre
+        /// </summary>
+        /// <param name="centre"></param>
+        /// <returns></returns>
         public int DelEquipement(int centre)
         {
-            //  c.AddProduit(p);
 
             using (DbConnection db = DAOConnection.GetConnexion())
             {
@@ -162,7 +167,7 @@ namespace DAO
                     DbParameter odbP3 = cde.CreateParameter();
                     odbP3.DbType = System.Data.DbType.Int32;
                     odbP3.Direction = System.Data.ParameterDirection.Input;
-                    odbP3.ParameterName = "@numcentre";
+                    odbP3.ParameterName = "@idCentre";
                     odbP3.Value = centre;
                     cde.Parameters.Add(odbP3);
 

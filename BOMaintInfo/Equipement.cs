@@ -8,10 +8,15 @@ namespace BO
 {
    public  class Equipement
     {
-        //private TypeEquipement type;
+        //======================================================================================================================================
+        //Attribut
+
         private Modele modele;
         private string numSerie;
         private Centre centre;
+
+        //======================================================================================================================================
+        //Accesseurs
 
         public Modele Modele
         {
@@ -54,9 +59,11 @@ namespace BO
             }
         }
 
+        //======================================================================================================================================
+        // Constructeurs
+
         public Equipement( Modele modele)
         {
-            //this.Type = type;
             this.Modele = modele;
         }
 
@@ -73,6 +80,10 @@ namespace BO
             this.centre = centre;
         }
 
+        //======================================================================================================================================
+        //Méthode surchargé
+
+
         public override bool Equals(object obj)
         {
             return obj is Equipement && ((Equipement)obj).numSerie == numSerie ; 
@@ -81,6 +92,11 @@ namespace BO
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
 
     }

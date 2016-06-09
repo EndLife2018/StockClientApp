@@ -13,6 +13,10 @@ using DAO;
 
 namespace BLL
 {
+    /// <summary>
+    /// Classe controleur ( pseudo pattern facade )
+    /// il instancie tous Manager
+    /// </summary>
     public class GestionClients
     {
         private ClientManager mgrClient;
@@ -21,6 +25,7 @@ namespace BLL
         private ModeleManager mgrModele;
         private TypeManager mgrType;
         private EquipementManager mgrEquipement;
+
 
 
         public List<Client> RechercherClients( string name)
@@ -52,7 +57,7 @@ namespace BLL
 
         }
 
-        /****************************************************************************************/
+        
 
         public List<Equipement> ListEquipementsDuCentre(int num)
         {

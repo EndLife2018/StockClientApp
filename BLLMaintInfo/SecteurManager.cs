@@ -14,10 +14,15 @@ namespace BLL
 {
     public class SecteurManager
     {
+        DAOSecteur cdao;
 
+        /// <summary>
+        /// Recupere la liste des tous les secteur géographique
+        /// </summary>
+        /// <returns></returns>
         public List<Secteur> GetAllSecteur()
         {
-            DAOSecteur cdao = new DAOSecteur();
+            cdao = new DAOSecteur();
 
 
             try

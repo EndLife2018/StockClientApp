@@ -13,10 +13,16 @@ namespace BLL
 {
     public class EquipementManager
     {
+        DAOEquipement cdao;
 
+        /// <summary>
+        /// Recherche la liste des equipements en fonction du centre
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
         public List<Equipement> GetEquipements(int search)
         {
-            DAOEquipement cdao = new DAOEquipement();
+            cdao = new DAOEquipement();
 
            
             try
@@ -31,9 +37,14 @@ namespace BLL
 
         }
 
+        /// <summary>
+        ///  Ajoute un equipement pour un centre
+        /// </summary>
+        /// <param name="equipement"></param>
+        /// <returns></returns>
         public int AddEquipements(Equipement equipement)
         {
-            DAOEquipement cdao = new DAOEquipement();
+            cdao = new DAOEquipement();
 
             try
             {
@@ -47,9 +58,14 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// Efface la liste des equipements appartenant à un centre
+        /// </summary>
+        /// <param name="centre"></param>
+        /// <returns></returns>
         public int DelEquipements(int centre)
         {
-            DAOEquipement cdao = new DAOEquipement();
+            cdao = new DAOEquipement();
 
             try
             {

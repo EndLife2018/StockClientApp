@@ -8,12 +8,18 @@ namespace BO
 {
    public class Client
     {
+        //======================================================================================================================================
+        //Attribut
         private int numClient;
         private string nomClient;
         private string adresseClient;
         private string telephoneClient;
-
         private List<Centre> centres;
+
+
+        //======================================================================================================================================
+        //Accesseurs
+
 
         public int NumClient
         {
@@ -80,6 +86,9 @@ namespace BO
             }
         }
 
+        //======================================================================================================================================
+        // Constructeurs
+
         public Client()
         {
 
@@ -102,6 +111,10 @@ namespace BO
             this.telephoneClient = telephoneClient;
             this.Centres = lcentres;
         }
+
+        //======================================================================================================================================
+        //Méthode surchargé
+
 
         public override bool Equals(object obj)
         {

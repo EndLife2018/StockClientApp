@@ -15,7 +15,10 @@ namespace DAO
 {
     public class DAOSecteur
     {
-
+        /// <summary>
+        /// RecRecupère la liste de tous les Secteurs géographiques
+        /// </summary>
+        /// <returns></returns>
         public List<Secteur> GetAllSecteur()
         {
            

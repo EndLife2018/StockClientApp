@@ -19,8 +19,7 @@ namespace MaintInfo
 
 
 
-        private GestionClients ctrlClients;
-
+        private GestionClients ctrlClients = null ; // Instance du controleur
         private Client client = null;// sauvegarde
         private enum Mode { LECTURE , AJOUT, MODIFICATION };
         private Mode mode;
@@ -28,18 +27,35 @@ namespace MaintInfo
         //======================================================================================================
         // GEstion methode interne
 
+        /// <summary>
+        /// Interdit ou autrise la saisie des champs 
+        /// </summary>
+        /// <param name="m"></param>
         private void Affichage(Mode m)
         {
-         
-            ValideChamp((mode == Mode.LECTURE) ? false : true);
+
+            // ValideChamp((mode ==   Mode.LECTURE) ? false : true);
+            bool b = (mode == Mode.LECTURE) ? false : true;
+            txtAdresse.Enabled = b;
+
+            txtNom.Enabled = b;
+            txtTel.Enabled = b;
+            btnAnnuler.Visible = b;
+            btnValider.Visible = b;
+            btnRetour.Visible = !b;
+            btnModifier.Visible = !b;
+            btnAjouterCentre.Visible = !b;
         }
 
-
+        /// <summary>
+        /// Vérification des la validité de la saisie
+        /// </summary>
+        /// <returns></returns>
         public bool Validation()
         {
             bool test = false;
 
-            //1 Test si un consultant a été sélectionné
+       
             if (txtNom.Text == string.Empty)
                 MessageBox.Show("Veuillez remplir le champ Nom");
             else if (txtAdresse.Text == string.Empty)
@@ -52,22 +68,9 @@ namespace MaintInfo
             return test;
         }
 
-        private void ValideChamp(bool b)
-        {
-            txtAdresse.Enabled = b;
-           
-            txtNom.Enabled = b;
-            txtTel.Enabled = b;
-            //dgvCentre.Enabled = b;
-            btnAnnuler.Visible = b;
-            btnValider.Visible = b;
-            btnRetour.Visible = !b;
-            btnModifier.Visible = !b;
-            btnAjouterCentre.Visible = !b;
-        }
-
         //=======================================================================================================
         // GEstion de l'initialisation
+
 
         public frmClient()
         {
@@ -119,15 +122,14 @@ namespace MaintInfo
         //==========================================================================================================
         // Gestion des boutons
 
+
         private void btnModifier_Click(object sender, EventArgs e)
         {
 
             mode = Mode.MODIFICATION;
             Affichage(mode);
         }
-
-
-       
+               
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
@@ -152,44 +154,34 @@ namespace MaintInfo
             centre.Show();
         }
 
-
-
-
-
+        
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            //>Vaalidation Champs SAisie
+            if (!Validation()) return;
+            
 
             if (mode == Mode.AJOUT )
             {
                 try
                 {
-                    //ADDClient
-                    if (Validation() )
-                    {
-                        ctrlClients = new GestionClients();
+                   
+                     ctrlClients = new GestionClients();
+                     if (client == null) client = new Client();
+                     client.AdresseClient = txtAdresse.Text;
+                     client.NomClient = txtNom.Text;
+                     client.TelephoneClient = txtTel.Text;
 
-                        client.AdresseClient = txtAdresse.Text;
-                        client.NomClient = txtNom.Text;
-                        client.TelephoneClient = txtTel.Text;
+                   
+                      int i = ctrlClients.AjouterClient( client );
+                      MessageBox.Show("Enregistrement du client", "Validation");
+                      client.NumClient = i;
+                    
 
-                        try
-                        {
-                            int i = ctrlClients.AjouterClient( client );
-                            MessageBox.Show("Enregistrement du client", "Validation");
-                            client.NumClient = i;
-                        }
-                        catch( Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-
-                        mode = Mode.LECTURE;
-                        Affichage(mode);
+                     mode = Mode.LECTURE;
+                     Affichage(mode);
 
 
-                    }
   
                 }
                 catch( Exception ex  )
@@ -214,6 +206,8 @@ namespace MaintInfo
                         mode = Mode.LECTURE;
                         Affichage(mode);
                     }
+
+
                 }
                 catch (Exception ex)
                 {
@@ -252,19 +246,6 @@ namespace MaintInfo
             }
         }
 
-        private void dgvCentre_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void frmClient_Activated(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void frmClient_Enter(object sender, EventArgs e)
-        {
-            dgvCentre.Update();
-        }
+     
     }
 }
