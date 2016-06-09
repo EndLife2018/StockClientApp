@@ -234,7 +234,9 @@ namespace MaintInfo
 
             try
             {
-                Centre tmp = new Centre(0, txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text, client);
+                int numcentre = (centre == null) ? 0 : centre.NumCentre;
+
+                Centre tmp = new Centre(numcentre, txtTel.Text, txtAdresse.Text, null, (Secteur)cbSecteur.SelectedItem, txtNomCentre.Text, client);
                 // int i = ctrlClient.AjouterCentre(tmp);
                 int i = fct(tmp);
 
