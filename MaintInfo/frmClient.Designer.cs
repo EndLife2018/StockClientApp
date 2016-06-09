@@ -263,7 +263,6 @@
             this.Controls.Add(this.grpCentres);
             this.Name = "frmClient";
             this.Text = "Le Client";
-            this.Load += new System.EventHandler(this.frmClient_Load);
             this.grpCentres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCentre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCentre)).EndInit();

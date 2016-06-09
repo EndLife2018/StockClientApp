@@ -112,12 +112,6 @@ namespace MaintInfo
             }
         }
 
-        private void frmClient_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
 
         //==========================================================================================================
         // Gestion des boutons
