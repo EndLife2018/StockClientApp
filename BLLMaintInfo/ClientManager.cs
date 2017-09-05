@@ -25,7 +25,6 @@ namespace BLL
         public List<Client> Rechercher(string search)
         {
             cdao = new DAOClient();
-
             try
             {
                 return cdao.GetClientsByName(search);

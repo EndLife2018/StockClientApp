@@ -43,6 +43,7 @@
     <Compile Include="CentreManager.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="EquipementManager.cs" />
+    <Compile Include="LoginManager.cs" />
     <Compile Include="ModeleManager.cs" />
     <Compile Include="SecteurManager.cs" />
     <Compile Include="TypeManager.cs" />

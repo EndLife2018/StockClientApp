@@ -48,6 +48,7 @@
     <Compile Include="DAOModele.cs" />
     <Compile Include="DAOSecteur.cs" />
     <Compile Include="DAOType.cs" />
+    <Compile Include="DAOUser.cs" />
     <Compile Include="Exceptions\DAOExceptionCentre.cs" />
     <Compile Include="Exceptions\DAOExceptionClient.cs" />
     <Compile Include="Exceptions\DAOExceptionConnection.cs" />
